@@ -1,0 +1,21 @@
+---
+layout: post
+title:  "Mamamia"
+date:   2024-01-12 12:00:00 +0700
+categories: blog
+tags: programming python mamah muda
+---
+
+Welcome to my blog post! You can start writing your content here.
+
+## Introduction
+
+Write your introduction here.
+
+## Main Content
+
+Add your main content here.
+
+## Conclusion
+
+Write your conclusion here.
