@@ -10,9 +10,13 @@
   icon: "fas fa-envelope"
   noblank: true # open link in current tab
 
-- type: rss
-  icon: "fas fa-rss"
-  noblank: true
+# - type: rss
+#   icon: "fas fa-rss"
+#   noblank: true
+
+- type: whatsapp
+  icon: 'fa-brands fa-whatsapp'
+  url: 'https://wa.me/6281254798079'                   # Fill with your Threads profile link
 # Uncomment and complete the url below to enable more contact options
 #
 # - type: mastodon
@@ -35,6 +39,3 @@
 #   icon: 'fa-brands fa-reddit'
 #   url: ''                   # Fill with your Reddit profile link
 #
-# - type: threads
-#   icon: 'fa-brands fa-threads'
-#   url: ''                   # Fill with your Threads profile link
