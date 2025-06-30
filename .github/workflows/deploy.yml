@@ -8,7 +8,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
-  
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -28,8 +28,7 @@ jobs:
 
     - name: Build & Export static
       run: |
-        npm run build    # harus sudah ada script "build": "next build" di package.json
-        npm run export   # harus sudah ada script "export": "next export"
+        npm run build   
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
