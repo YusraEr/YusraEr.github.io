@@ -5,6 +5,7 @@ import { home, about, person, newsletter, baseURL, routes } from "@/resources";
 import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
+import { TRUE } from "sass";
 
 export default function Home() {
   return (
@@ -68,7 +69,7 @@ export default function Home() {
         </Column>
       </Column>
       <RevealFx translateY="16" delay={0.6}>
-        <Projects range={[1, 1]} />
+        <Projects range={[1, 1]} home={true}/>
       </RevealFx>
       {routes["/blog/"] && (
         <Flex fillWidth gap="24" mobileDirection="column">

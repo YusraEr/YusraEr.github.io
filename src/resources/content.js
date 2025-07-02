@@ -9,8 +9,8 @@ const person = {
   role: "Data Scientist",
   avatar: "/images/avatar.jpg",
   email: "yusraerlangg@gmail.com",
-  location: "Asia/Makassar", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  location: "Asia/Makassar",
+  languages: [], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
@@ -18,8 +18,8 @@ const newsletter = {
   title: <>Subscribe to {person.firstName}&apos;s Newsletter</>,
   description: (
     <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
+      I occasionally write about design, technology, and share thoughts on the
+      intersection of creativity and engineering.
     </>
   ),
 };
@@ -60,16 +60,21 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: <>Transforming data into meaningful insights</>,
   featured: {
     display: true,
-    title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
+    title: (
+      <>
+        Recent project: <strong className="ml-4"> Soon </strong>
+      </>
+    ),
     href: "/work/building-once-ui-a-customizable-design-system",
   },
   subline: (
     <>
-      I&apos;m Selene, a design engineer at <Logo icon="/trademarks/wordmark-dark.svg" style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      I&apos;m Yusra, an undergraduate Data Science student at Hasanuddin
+      University , where I analyze complex data and build predictive models.
+      <br /> Passionate about turning raw data into actionable solutions.
     </>
   ),
 };
@@ -95,9 +100,10 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Yusra is a Makassar-based undergraduate student at Hasanuddin University
+        with a passion for data science and transforming complex data into
+        meaningful insights. His work focuses on machine learning, data
+        analysis, and the convergence of statistics and technology.
       </>
     ),
   },
@@ -106,41 +112,65 @@ const about = {
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Hasanuddin University",
+        timeframe: "2025 - Present",
+        role: "Programming Laboratory Assistant",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Assisted students in learning fundamental programming concepts
+            including data structures, algorithms, and software development
+            methodologies.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Conducted laboratory sessions and workshops on Python programming,
+            data analysis, and machine learning fundamentals.
+          </>,
+          <>
+            Mentored over 90 students throughout the semester, resulting in
+            improved academic performance and programming proficiency.
           </>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "UKM LDK MPM Unhas",
+        timeframe: "2023 - Present",
+        role: "Lead of Media Information Department",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Led content strategy and digital media campaigns, increasing social
+            media engagement by 40% through data-driven content optimization.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Managed media analytics and reporting, utilizing data visualization
+            tools to track performance metrics and inform strategic decisions.
+          </>,
+          <>
+            Coordinated cross-functional teams to deliver multimedia projects,
+            improving workflow efficiency through process automation.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "Hasanuddin University",
+        timeframe: "2024",
+        role: "Teaching Assistant - Mathematical Foundations",
+        achievements: [
+          <>
+            Taught advanced linear algebra concepts including matrix operations,
+            eigenvalues, vector spaces, and their applications in data science
+            and machine learning algorithms.
+          </>,
+          <>
+            Instructed students in differential and integral calculus, focusing
+            on optimization techniques, multivariable calculus, and mathematical
+            analysis essential for data modeling.
+          </>,
+          <>
+            Developed comprehensive tutorials on discrete mathematics,
+            probability theory, and statistical foundations, improving student
+            comprehension of mathematical concepts.
           </>,
         ],
         images: [],
@@ -152,12 +182,22 @@ const about = {
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "Hasanuddin University",
+        description: (
+          <>
+            Undergraduate in Information System with focus on Data Science and
+            Machine Learning.
+          </>
+        ),
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Online Learning Platforms",
+        description: (
+          <>
+            Self-learning data science through Dicoding, Digitalent, and other
+            online resources.
+          </>
+        ),
       },
     ],
   },
@@ -166,36 +206,32 @@ const about = {
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
-        // optional: leave the array empty if you don't want to display images
+        title: "Python",
+        description: (
+          <>
+            Proficient in Python for data analysis, machine learning, and
+            statistical modeling.
+          </>
+        ),
         images: [
+          // optional: leave the array empty if you don't want to display images
           {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
+            src: "/images/projects/project-01/cover-01.jpg",
+            alt: "Once UI Project",
             width: 16,
             height: 9,
           },
         ],
       },
       {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Data Analysis",
+        description: (
+          <>
+            Experienced with pandas, numpy, and scikit-learn for data processing
+            and analysis.
+          </>
+        ),
+        images: [],
       },
     ],
   },
@@ -213,7 +249,7 @@ const blog = {
 const work = {
   path: "/work/",
   label: "Work",
-  title: `Projects – ${person.name}`,
+  title: `Projects - ${person.name}`,
   description: `Design and dev projects by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes
@@ -222,7 +258,7 @@ const work = {
 const gallery = {
   path: "/gallery/",
   label: "Gallery",
-  title: `Photo gallery – ${person.name}`,
+  title: `Photo gallery - ${person.name}`,
   description: `A photo collection by ${person.name}`,
   // Images by https://lorant.one
   // These are placeholder images, replace with your own

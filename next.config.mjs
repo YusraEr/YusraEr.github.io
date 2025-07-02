@@ -13,6 +13,21 @@ const nextConfig = {
     compiler: "modern",
     silenceDeprecations: ["legacy-js-api"],
   },
+  webpack: (config, { isServer }) => {
+    // Handle PrismJS components loading
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false,
+    };
+    
+    // Ignore optional PrismJS components that might cause issues
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'prismjs/components': false,
+    };
+    
+    return config;
+  },
   // GitHub Pages configuration
   output: 'export',
   trailingSlash: true,
