@@ -1,0 +1,187 @@
+---
+title: "Depressive Disorder Prediction using Machine Learning with XAI"
+summary: "Developing a predictive model for depressive disorder using BRFSS data, ensemble classifiers, SMOTE, and SHAP analysis."
+publishedAt: "2025-07-05"
+images:
+  - "/images/projects/work-01/image-01.png"
+  - "/images/projects/work-01/image-03.png"
+  - "/images/projects/work-01/image-04.png"
+  - "/images/projects/work-01/image-05.png"
+tag: "Machine Learning"
+team:
+  - name: "Yusra Erlangga Putra"
+    role: "Data Scientist"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://github.com/YusraEr/"
+  - name: "Khalika Tsabitah Malik"
+    role: "Web Developer"
+    avatar: "/images/unknown.png"
+    linkedIn: "https://github.com/khalikaa/"
+  - name: "Nancy Jiwono"
+    role: "Data Scientist"
+    avatar: "/images/unknown.png"
+    linkedIn: "https://github.com/nancyjwn/"
+  - name: "Zainab Muchsinin"
+    role: "Data Scientist"
+    avatar: "/images/unknown.png"
+    linkedIn: "https://github.com/zaynabzhaa10/"
+  - name: "Alifsa"
+    role: "Data Scientist"
+    avatar: "/images/unknown.png"
+    linkedIn: "https://github.com/alifsarezkyrahmah/"
+link: "https://github.com/khalikaa/depression-risk-prediction"
+---
+
+
+## Project Overview
+
+Depression is one of the most common mental health disorders, yet many people do not receive early diagnosis or support. In this project, I developed a machine learning model to predict a person’s risk of having depression, based on real-world health survey data.
+
+The goal is to help identify people who may be at risk, using factors like stress, loneliness, physical health, and lifestyle—so that preventive actions can be taken earlier.
+
+## Data Source
+
+The model is trained on data from the **Behavioral Risk Factor Surveillance System (BRFSS)**, a large-scale public health survey conducted in the United States.
+
+The dataset includes information from thousands of adults, covering:
+
+<Table 
+  data={{
+    headers: [
+      { content: "Category", key: "category", sortable: true },
+      { content: "Examples", key: "examples" }
+    ],
+    rows: [
+      ["Demographics", "Age, Gender, Race, Education, Income"],
+      ["Health", "Diabetes, Asthma, Arthritis, BMI"],
+      ["Lifestyle", "Physical activity, Smoking, Alcohol use"],
+      ["Social factors", "Stress, Loneliness, Emotional support, Life satisfaction"]
+    ]
+  }}
+/>
+The target variable is whether a person reported having been diagnosed with depression.
+
+## How the Model Works
+
+To predict depression risk, I used several machine learning methods that are good at handling complex, real-life data:
+
+- **Random Forest**
+- **Gradient Boosting**
+- **Histogram Gradient Boosting (HGB)**
+
+Because the number of people with and without depression in the data was imbalanced, I used a technique called **SMOTE** to balance it. I also fine-tuned the models using **Bayesian Optimization** to improve accuracy.
+
+To explain how the model makes decisions, I used a tool called **SHAP**, which shows how much each feature (like stress or gender) contributes to the prediction.
+
+## Results
+
+The best-performing model was the **Histogram Gradient Boosting** with tuning. It achieved:
+
+<CodeBlock
+    marginBottom="16"
+    codes={[
+  {
+    code:
+`Accuracy:   74%
+Precision:  67%
+Recall:     73%
+F1-Score:   68%
+ROC AUC:    81%`,
+    language: "text",
+    label: "Model Performance"
+  }
+]} />
+
+These results show that the model is fairly accurate in identifying individuals who may be at risk of depression.
+
+## What Factors Matter Most?
+
+By analyzing the model, we found that these are the most important factors linked to depression:
+
+- **Stress frequency** — How often a person feels stressed  
+- **Gender** — With women showing higher risk  
+- **Loneliness** — Feeling isolated or unsupported  
+- **Age group** — Young adults and middle-aged groups have higher rates  
+- **Race/Ethnicity** — Some groups are more affected than others  
+
+These findings are consistent with mental health research and highlight the need for social and emotional support.
+
+## Why This Matters?
+
+This model can help:
+
+- Screen for depression risk without invasive tests  
+- Guide health programs to target those who need help most  
+- Support doctors and counselors with data-driven insights  
+- Raise awareness about how daily life affects mental health  
+
+## Limitations
+
+- The data is self-reported, so it may contain some bias  
+- The model is based on U.S. data—it should be tested on other populations  
+- It does not include clinical or genetic information  
+
+## What’s Next
+
+In the future, this project can be expanded by:
+
+- Connecting with real-time data (e.g., wearables or electronic medical records)  
+- Exploring deep learning models for more complex analysis  
+- Adapting the model for use in other countries, including Indonesia  
+
+
+## Website Overview
+
+You can try our page
+<SmartLink href="https://github.com/khalikaa/depression-risk-prediction">on this site</SmartLink>
+to see how the model works and visualize the results. The website includes:
+
+### Landing Page
+
+<Media
+  src="/images/projects/work-01/image-01.png"
+  sizes="640px"
+  alt="Example image"
+  aspectRatio="3/4"
+  radius="l"
+/>
+
+### Discover Page
+
+<Media
+  src="/images/projects/work-01/image-02.png"
+  sizes="640px"
+  alt="Example image"
+  aspectRatio="3/4"
+  radius="l"
+/>
+
+### Prediction Page
+
+<Media
+  src="/images/projects/work-01/image-03.png"
+  sizes="640px"
+  alt="Example image"
+  aspectRatio="9/16"
+  radius="l"
+/>
+
+### Results Page (Positive Prediction)
+
+<Media
+  src="/images/projects/work-01/image-04.png"
+  sizes="640px"
+  alt="Example image"
+  aspectRatio="4/3"
+  radius="l"
+/>
+
+### Results Page (Negative Prediction)
+
+<Media
+  src="/images/projects/work-01/image-05.png"
+  sizes="640px"
+  alt="Example image"
+  aspectRatio="4/3"
+  radius="l"
+/>

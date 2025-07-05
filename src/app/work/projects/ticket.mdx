@@ -1,0 +1,164 @@
+---
+title: "EventHub – Modern Event Management Platform"
+summary: "A full-featured e-ticketing system for managing events, enabling seamless interactions between admins, organizers, and attendees."
+publishedAt: "2025-07-05"
+team:
+  - name: "Yusra Erlangga Putra"
+    role: "Data Scientist"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://github.com/YusraEr/"
+link: "https://github.com/YusraEr/E-Ticketing-Event-Website"
+---
+
+## Overview
+
+**EventHub** is a modern event management platform that streamlines event creation, ticket sales, and user interaction. Built as an all-in-one e-ticketing system, it serves event organizers, admins, and attendees in managing and participating in events seamlessly.
+
+## Why EventHub?
+
+Managing events involves multiple challenges: creating events, tracking ticket availability, managing attendees, and processing payments. EventHub offers:
+
+- Centralized control for admins and organizers
+- Real-time ticket tracking
+- Easy ticket booking for attendees
+- Secure and scalable Laravel-based architecture
+
+With a full feature set and modern UI, EventHub is ideal for managing anything from small workshops to large conferences.
+
+## How It Works
+
+1. Admins manage users, events, and view reports
+2. Organizers create and track their own events
+3. Attendees browse, book, and review events
+4. Ticket availability updates in real time
+5. Payments and bookings processed securely
+
+## Core Features
+
+<Table
+  data={{
+    headers: [
+      { content: "Module", key: "module" },
+      { content: "Features", key: "features" },
+    ],
+    rows: [
+      [
+        "Event Management",
+        "Create, update, delete events, upload images, manage tickets",
+      ],
+      [
+        "User Dashboard",
+        "Authentication, booking history, favorite events, profile settings",
+      ],
+      [
+        "Search & Discovery",
+        "Advanced filters, featured events, real-time availability",
+      ],
+      ["Admin Panel", "User management, event control, booking analytics"],
+      ["Security", "Sanctum auth, CSRF/XSS protection, input validation"],
+    ],
+  }}
+/>
+
+## Tech Stack
+
+- **Frontend:** Laravel Blade, TailwindCSS, Alpine.js, Swiper.js
+- **Backend:** Laravel 11, PHP 8.1+, MySQL
+- **Utilities:** Laravel Auth, Payment Integration, Image Processing
+
+## Installation Guide
+
+To run the platform locally:
+
+<CodeBlock
+  marginBottom="16"
+  codes={[
+    {
+      code: `git clone https://github.com/YusraEr/E-Ticketing-Event-Website.git
+cd E-Ticketing-Event-Website
+composer install
+npm install
+cp .env.example .env
+php artisan key:generate`,
+      language: "bash",
+      label: "Initial Setup",
+    },
+    {
+      code: `# Edit .env with your DB credentials
+php artisan migrate --seed
+php artisan serve
+npm run dev`,
+      language: "bash",
+      label: "Configure and Run",
+    },
+  ]}
+/>
+
+**Requirements:**
+
+- PHP 8.1+
+- Composer
+- Node.js & NPM
+- MySQL
+
+<Grid fillWidth columns="3" mobileColumns="2" gap="16">
+  <Column border="neutral-alpha-medium" padding="16" radius="m">
+    <Text>PHP 8.1+</Text>
+  </Column>
+  <Column border="neutral-alpha-medium" padding="16" radius="m">
+    <Text>Composer</Text>
+  </Column>
+  <Column border="neutral-alpha-medium" padding="16" radius="m">
+    <Text>Node.js & NPM</Text>
+  </Column>
+  <Column border="neutral-alpha-medium" padding="16" radius="m">
+    <Text>MySQL</Text>
+  </Column>
+</Grid>
+
+## Security Features
+
+- Laravel Sanctum authentication
+- CSRF protection
+- XSS and SQL Injection prevention
+- Input validation
+- Secure file uploads
+
+## Screens & Preview
+
+### Landing Page
+
+_Home page with featured events and search functionality_
+
+### Event Discovery
+
+![Event Discovery](https://via.placeholder.com/800x400.png)
+
+### Event Details
+
+_Detailed event information and booking interface_
+
+### User Dashboard
+
+_View and manage bookings, favorites, and profile_
+
+### Admin Panel
+
+_Admin access to manage all users and events_
+
+### Booking Flow
+
+_Streamlined booking and payment system_
+
+## Repository & Contact
+
+<CodeBlock
+  marginBottom="16"
+  codes={[
+    {
+      code: `https://github.com/YusraEr/E-Ticketing-Event-Website.git`,
+      language: "bash",
+      label: "GitHub Repository",
+    },
+  ]}
+/>
