@@ -229,12 +229,12 @@ const about = {
         ),
         images: [
           // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
+          // {
+          //   src: "/images/projects/project-01/cover-01.jpg",
+          //   alt: "Once UI Project",
+          //   width: 16,
+          //   height: 9,
+          // },
         ],
       },
       {
@@ -243,6 +243,17 @@ const about = {
           <>
             Experienced with pandas, numpy, and scikit-learn for data processing
             and analysis.
+          </>
+        ),
+        images: [],
+      },
+      {
+        title: "Teaching",
+        description: (
+          <>
+            Skilled in breaking down complex technical concepts into digestible
+            learning materials, with experience mentoring students in
+            programming and mathematics.
           </>
         ),
         images: [],
@@ -278,12 +289,12 @@ const gallery = {
   // These are placeholder images, replace with your own
   images: [
     {
-      src: "/images/gallery/horizontal-1.jpg",
+      src: "/images/gallery/lab.jpg",
       alt: "image",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/horizontal-2.jpg",
+      src: "/images/gallery/lab2.jpg",
       alt: "image",
       orientation: "horizontal",
     },
@@ -313,7 +324,7 @@ const gallery = {
       orientation: "vertical",
     },
     {
-      src: "/images/gallery/vertical-4.jpg",
+      src: "/images/gallery/ceramah.png",
       alt: "image",
       orientation: "vertical",
     },
