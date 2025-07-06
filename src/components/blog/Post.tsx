@@ -52,15 +52,32 @@ export default function Post({ post, thumbnail, direction }: PostProps) {
                     </Heading>
                     <Text
                         variant="label-default-s"
+                        className='mb-12'
                         onBackground="neutral-weak">
                         {formatDate(post.metadata.publishedAt, false)}
                     </Text>
-                    { post.metadata.tag && 
-                        <Tag
-                            className="mt-12"
-                            label={post.metadata.tag}
-                            variant="neutral" />
+                    <Flex 
+                    position='relative' 
+                    transition='micro-medium' 
+                    direction='row'
+                    gap='8'
+                    wrap
+                    >
+                    { post.metadata.tag && Array.isArray(post.metadata.tag) ? 
+                        post.metadata.tag.map((tag:string, index:number) => (
+                            <Tag
+                                key={index}
+                                label={tag}
+                                variant="neutral"/>
+                        )) :
+                        post.metadata.tag && (
+                            <Tag
+                                // className="mt-12"
+                                label={post.metadata.tag}
+                                variant="neutral" />
+                        )
                     }
+                    </Flex>
                 </Column>
             </Flex>
         </SmartLink>
