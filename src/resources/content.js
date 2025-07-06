@@ -48,6 +48,11 @@ const social = [
     link: `https://www.instagram.com/ys_erlanggaa/`,
   },
   {
+    name: "WhatsApp",
+    icon: "whatsapp",
+    link: `https://wa.me/6281254798079`,
+  },
+  {
     name: "Email",
     icon: "email",
     link: `mailto:${person.email}`,
@@ -138,7 +143,7 @@ const about = {
         role: "Lead of Media Information Department",
         achievements: [
           <>
-            Led content strategy and digital media campaigns, increasing social
+            Lead content strategy and digital media campaigns, increasing social
             media engagement by 40% through data-driven content optimization.
           </>,
           <>
@@ -159,13 +164,12 @@ const about = {
         achievements: [
           <>
             Taught advanced linear algebra concepts including matrix operations,
-            eigenvalues, vector spaces, and their applications in data science
-            and machine learning algorithms.
+            eigenvalues, vector spaces, and their applications.
           </>,
           <>
             Instructed students in differential and integral calculus, focusing
             on optimization techniques, multivariable calculus, and mathematical
-            analysis essential for data modeling.
+            analysis essential.
           </>,
           <>
             Developed comprehensive tutorials on discrete mathematics,
@@ -189,6 +193,16 @@ const about = {
             Machine Learning.
           </>
         ),
+        timeframe: "2023 - Present",
+      },
+      {
+        name: "SMAN 7 Maros",
+        description: (
+          <>
+            High school with focus on Natural Sciences (IPA) and mathematics.
+          </>
+        ),
+        timeframe: "2020 - 2023",
       },
       {
         name: "Online Learning Platforms",
