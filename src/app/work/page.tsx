@@ -1,4 +1,4 @@
-import { Column, Meta, Schema } from "@once-ui-system/core";
+import { Column, Meta, Schema, RevealFx, Heading } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { Projects } from "@/components/work/Projects";
 
@@ -14,7 +14,7 @@ export async function generateMetadata() {
 
 export default function Work() {
   return (
-    <Column maxWidth="m">
+    <Column maxWidth="s">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -28,6 +28,11 @@ export default function Work() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
+      <RevealFx translateY="4" fillWidth horizontal="center">
+        <Heading marginBottom="l" variant="display-strong-s">
+          {work.title}
+        </Heading>
+      </RevealFx>
       <Projects />
     </Column>
   );

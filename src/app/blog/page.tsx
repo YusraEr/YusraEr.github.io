@@ -1,4 +1,4 @@
-import { Column, Heading, Meta, Schema, RevealFx } from "@once-ui-system/core";
+import { Column, Heading, Meta, Schema, RevealFx, Text } from "@once-ui-system/core";
 import { Mailchimp } from "@/components";
 import { Posts } from "@/components/blog/Posts";
 import { baseURL, blog, person, newsletter } from "@/resources";

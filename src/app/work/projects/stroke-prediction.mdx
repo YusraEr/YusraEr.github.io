@@ -1,0 +1,154 @@
+---
+title: "Stroke Risk Prediction with Machine Learning"
+summary: "A predictive system using SVM, Random Forest, SMOTE, and Bayesian Optimization to detect stroke risk with high accuracy and clinical relevance."
+publishedAt: "2024-10-05"
+team:
+  - name: "Yusra Erlangga Putra"
+    role: "Data Scientist"
+    avatar: "/images/avatar.jpg"
+    linkedIn: ""
+---
+
+## Overview
+
+Stroke remains one of the leading causes of death and disability globally. Early detection is critical, as up to 80% of cases are preventable with proper risk management. This project presents a machine learning-based stroke prediction model using demographic, health, and lifestyle data.
+
+By combining ensemble learning, data balancing techniques, and hyperparameter optimization, we aim to support clinical decision-making and preventive public health strategies.
+
+<Feedback
+  icon
+  variant="info"
+  title="Main Goal"
+  description="Develop an accurate and scalable stroke prediction model to support early risk identification and reduce long-term health burdens."
+/>
+
+## Why This Matters
+
+- **Stroke kills over 6 million people annually**, with many cases going undetected until it's too late.
+- **Low- and middle-income countries**, like Indonesia, are disproportionately affected.
+- **Machine learning** enables complex pattern recognition that surpasses conventional diagnostic tools.
+- A well-optimized predictive model can help target **preventive interventions** and **reduce healthcare costs**.
+
+## How It Works
+
+We developed and compared two machine learning models:
+
+- **Random Forest**
+- **Support Vector Machine (SVM)**
+
+To handle severe class imbalance (only ~5% of patients had stroke), we applied **SMOTE**. We then used **Bayesian Optimization** to fine-tune model parameters.
+
+<CodeBlock
+  marginBottom="16"
+  codes={[
+    {
+      code:
+`• Dataset: 5,110 patient records
+• Positive cases (stroke): 249 (4.87%)
+• Preprocessing: cleaning, KNN imputation, encoding
+• Model tuning: Bayesian Optimization (32 iterations)
+• Evaluation: Modified K-Fold with 25 iterations`,
+      language: "text",
+      label: "System Pipeline"
+    }
+  ]}
+/>
+
+## Dataset Summary
+
+Data sourced from [Kaggle Stroke Prediction Dataset](https://www.kaggle.com). Each record contains 12 features:
+
+<Table 
+  data={{
+    headers: [
+      { content: "Feature", key: "feature" },
+      { content: "Type", key: "type" },
+      { content: "Description", key: "desc" }
+    ],
+    rows: [
+      ["age", "Numeric", "Patient's age"],
+      ["gender", "Categorical", "Male, Female"],
+      ["hypertension", "Binary", "Has high blood pressure"],
+      ["heart_disease", "Binary", "Has heart condition"],
+      ["ever_married", "Categorical", "Marital status"],
+      ["work_type", "Categorical", "Employment type"],
+      ["Residence_type", "Categorical", "Urban or rural"],
+      ["avg_glucose_level", "Numeric", "Average blood sugar"],
+      ["bmi", "Numeric", "Body Mass Index"],
+      ["smoking_status", "Categorical", "Smoking behavior"],
+      ["stroke", "Binary", "Target variable"]
+    ]
+  }}
+/>
+
+## Preprocessing Highlights
+
+- **Data cleaning**: removed irrelevant IDs, excluded patients < 18 years old  
+- **Missing values**: filled using **KNN Imputer**  
+- **Class imbalance**: addressed with **SMOTE**  
+- **Categorical variables**: handled via **Label Encoding**  
+- **Modified K-Fold Cross Validation** to ensure class balance in every fold  
+
+## Machine Learning Models
+
+We implemented and optimized:
+
+### 1. Random Forest  
+- Bagging ensemble of decision trees  
+- Selected features via Gini impurity  
+- Tuned parameters: `n_estimators`, `max_depth`, `min_samples_leaf`, `max_features`
+
+### 2. Support Vector Machine (SVM)  
+- Linear classifier using optimal hyperplane  
+- Key strength: interpretability and low bias  
+- Tuned parameters: `C` (regularization), `gamma` (kernel), `kernel='rbf'`
+
+## Optimization Strategy
+
+We used **Bayesian Optimization** to efficiently search hyperparameter space and maximize F1-score, using:
+
+- **BayesSearchCV**  
+- **Gaussian Process surrogate model**  
+- **3-fold cross-validation**  
+- **32 iterations, random_state=42**
+
+This method significantly outperformed traditional Grid Search and Random Search in speed and accuracy.
+
+## Evaluation Metrics
+
+To measure model effectiveness:
+
+<CodeBlock
+  marginBottom="16"
+  codes={[
+    {
+      code:
+`Accuracy = (TP + TN) / (TP + TN + FP + FN)
+Precision = TP / (TP + FP)
+Recall    = TP / (TP + FN)
+F1-Score  = 2 * (Precision * Recall) / (Precision + Recall)`,
+      language: "text",
+      label: "Performance Metrics"
+    }
+  ]}
+/>
+
+> We prioritized **F1-score** and **Recall**, as it's more important to correctly identify stroke risk than to minimize false positives.
+
+## Key Insights
+
+- **SVM + SMOTE + Bayesian Optimization** achieved the **best performance** across all validation folds  
+- **Age** was the most correlated predictor  
+- **SMOTE** significantly improved model ability to detect positive cases  
+- **Modified K-Fold** ensured reliable, real-world generalization  
+
+## Real-World Value
+
+- Can assist doctors in **early screening of high-risk patients**  
+- Useful for **public health programs** focusing on stroke prevention  
+- Reduces risk of missed diagnosis in imbalanced medical datasets  
+
+## Authors & Affiliations
+
+**Yusra Erlangga Putra**, Sheryl Anastasya, Resky A. K. Askin, Ivan Betrandi, Amaliah Diah  
+*Department of Mathematics, Universitas Hasanuddin*

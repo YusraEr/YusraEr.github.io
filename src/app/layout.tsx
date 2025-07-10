@@ -8,6 +8,11 @@ import { Background, Column, Flex, Meta, opacity, SpacingToken } from "@once-ui-
 import { Footer, Header, RouteGuard, Providers } from '@/components';
 import { baseURL, effects, fonts, style, dataStyle, home } from '@/resources';
 
+// Version untuk cache busting
+const BUILD_VERSION = process.env.NODE_ENV === 'production' 
+  ? `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+  : 'dev';
+
 export async function generateMetadata() {
   return Meta.generate({
     title: home.title,
@@ -37,6 +42,44 @@ export default async function RootLayout({
       )}
     >
       <head>
+        <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta httpEquiv="Pragma" content="no-cache" />
+        <meta httpEquiv="Expires" content="0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script
+          id="version-check"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.BUILD_VERSION = '${BUILD_VERSION}';
+              
+              // Check for version updates
+              function checkVersion() {
+                const currentVersion = localStorage.getItem('build-version');
+                if (currentVersion && currentVersion !== window.BUILD_VERSION) {
+                  // Version changed, clear cache and reload
+                  if ('caches' in window) {
+                    caches.keys().then(cacheNames => {
+                      Promise.all(
+                        cacheNames.map(cacheName => caches.delete(cacheName))
+                      ).then(() => {
+                        localStorage.setItem('build-version', window.BUILD_VERSION);
+                        window.location.reload();
+                      });
+                    });
+                  } else {
+                    localStorage.setItem('build-version', window.BUILD_VERSION);
+                    window.location.reload();
+                  }
+                } else if (!currentVersion) {
+                  localStorage.setItem('build-version', window.BUILD_VERSION);
+                }
+              }
+              
+              // Run version check on load
+              checkVersion();
+            `,
+          }}
+        />
         <script
           id="theme-init"
           dangerouslySetInnerHTML={{
