@@ -1,0 +1,64 @@
+---
+title: "Menemukan Pola Tersembunyi: Pengantar Clustering dan Aturan Asosiasi"
+publishedAt: "2025-01-18"
+summary: "Tidak semua data memiliki label. Di sinilah unsupervised learning bersinar. Mari kita jelajahi dua teknik utamanya, clustering dan aturan asosiasi, untuk menemukan struktur tersembunyi dalam data Anda."
+tag: "Machine Learning"
+---
+
+Sejauh ini, kita banyak membahas *supervised learning*, di mana kita memiliki data berlabel (input dan output yang benar) untuk melatih model. Namun, bagaimana jika kita hanya memiliki data tanpa label sama sekali? Apakah kita masih bisa mendapatkan wawasan darinya? Tentu saja bisa. Selamat datang di dunia *unsupervised learning*.
+
+*Unsupervised learning* adalah tentang menemukan pola, struktur, dan hubungan yang melekat dalam data itu sendiri, tanpa adanya panduan dari output yang telah ditentukan sebelumnya. Dua teknik yang paling populer dalam kategori ini adalah **Clustering** dan **Aturan Asosiasi**.
+
+### Clustering: Mengelompokkan yang Serupa
+
+Tujuan dari *clustering* adalah untuk mengelompokkan titik-titik data ke dalam beberapa grup (disebut *cluster*) sedemikian rupa sehingga objek dalam satu cluster lebih mirip satu sama lain daripada dengan objek di cluster lain.
+
+**Pikirkan tentang "Segmentasi" atau "Pengelompokan Alami".**
+
+<Feedback icon variant="info" title="Contoh Aplikasi Clustering" description="- **Segmentasi Pelanggan**: Mengelompokkan pelanggan berdasarkan perilaku pembelian mereka untuk strategi marketing yang lebih tertarget.\n- **Pengelompokan Dokumen**: Mengorganisir ribuan artikel berita ke dalam topik-topik seperti 'Olahraga', 'Politik', atau 'Teknologi'.\n- **Deteksi Anomali**: Data yang tidak masuk ke dalam cluster mana pun bisa jadi merupakan anomali atau outlier yang menarik untuk diselidiki." />
+
+#### Algoritma Clustering Populer:
+
+-   **K-Means**: Algoritma yang paling terkenal. Ia mencoba mempartisi data ke dalam *K* jumlah cluster yang telah ditentukan sebelumnya.
+-   **DBSCAN (Density-Based Spatial Clustering of Applications and Noise)**: Mengelompokkan titik data yang berdekatan secara padat, sangat baik untuk menemukan cluster dengan bentuk yang tidak teratur dan menangani *noise*.
+-   **Hierarchical Clustering**: Membangun sebuah hierarki cluster, baik secara *agglomerative* (dari bawah ke atas) maupun *divisive* (dari atas ke bawah).
+
+### Aturan Asosiasi: Menemukan Hubungan
+
+Aturan asosiasi (*association rule learning*) adalah metode untuk menemukan hubungan atau asosiasi yang menarik antara variabel dalam database yang besar. Ini paling sering digunakan untuk analisis keranjang belanja.
+
+**Pikirkan tentang "Jika membeli ini, maka akan membeli itu".**
+
+<Feedback icon variant="info" title="Contoh Aturan Asosiasi Klasik" description="Aturan yang paling terkenal adalah 'Jika seseorang membeli popok, maka kemungkinan besar mereka juga akan membeli bir'. Ini mungkin terdengar aneh, tetapi analisis data pasar swalayan menemukan pola ini, yang mengarah pada penempatan produk yang strategis." />
+
+#### Konsep Kunci dalam Aturan Asosiasi:
+
+*   **Support**: Seberapa sering sebuah item atau set item muncul dalam dataset. `Support(A) = (Jumlah transaksi mengandung A) / (Total transaksi)`
+*   **Confidence**: Seberapa sering aturan tersebut terbukti benar. `Confidence(A -> B) = (Jumlah transaksi mengandung A dan B) / (Jumlah transaksi mengandung A)`
+*   **Lift**: Mengukur seberapa besar kemungkinan item B dibeli ketika item A dibeli, sambil mengontrol seberapa populer item B itu sendiri. `Lift > 1` menunjukkan hubungan positif
+
+#### Algoritma Aturan Asosiasi:
+
+*   **Apriori**: Algoritma klasik yang menggunakan pendekatan *bottom-up* untuk menemukan *itemset* yang sering muncul.
+*   **FP-Growth (Frequent Pattern Growth)**: Algoritma yang lebih efisien daripada Apriori karena tidak memerlukan pembuatan kandidat *itemset* berulang kali.
+
+### Kapan Menggunakan yang Mana?
+
+<AccordionGroup 
+    items={[
+      {
+        title: "Gunakan Clustering ketika...",
+        content: <Text variant="body-default-m" onBackground="neutral-weak">Anda ingin membagi data Anda menjadi beberapa grup yang berbeda berdasarkan kesamaan fitur. Tujuannya adalah untuk memahami struktur intrinsik dari data dan mengidentifikasi segmen-segmen yang ada. Contoh: 'Siapa saja tipe-tipe pelanggan saya?'</Text>
+      },
+      {
+        title: "Gunakan Aturan Asosiasi ketika...",
+        content: <Text variant="body-default-m" onBackground="neutral-weak">Anda ingin menemukan hubungan antar item dalam data transaksional. Tujuannya adalah untuk menemukan produk atau peristiwa apa yang sering terjadi bersamaan. Contoh: 'Produk apa yang sering dibeli bersamaan?'</Text>
+      }
+    ]}
+/>
+
+### Kesimpulan
+
+*Unsupervised learning* adalah alat yang sangat kuat untuk eksplorasi data. Ketika Anda dihadapkan pada lautan data tanpa label, *clustering* dapat membantu Anda melihat pulau-pulau (kelompok) yang ada, sementara aturan asosiasi dapat membantu Anda memahami jembatan (hubungan) antar pulau tersebut. Keduanya membuka pintu untuk wawasan yang tidak akan pernah Anda temukan hanya dengan melihat data secara manual.
+
+```
