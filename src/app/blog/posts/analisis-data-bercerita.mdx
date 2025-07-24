@@ -1,6 +1,6 @@
 ---
 title: "Analisis Data Bukan Sekadar Grafik: Seni Bercerita dengan Angka"
-publishedAt: "2025-07-25"
+publishedAt: "2024-08-15"
 summary: "Data yang bagus tanpa cerita yang menarik hanyalah angka-angka yang bisu. Mari kita pelajari bagaimana mengubah analisis data menjadi sebuah narasi yang memukau dan persuasif."
 tag: "Data Analysis"
 image: "/images/gallery/horizontal-2.jpg"
@@ -12,58 +12,94 @@ Inilah pertanyaan yang seringkali membedakan antara analis data yang biasa saja 
 
 ## Mengapa Cerita Itu Penting?
 
-Otak manusia lebih mudah mencerna dan mengingat cerita dibandingkan dengan data mentah atau statistik. Sebuah cerita memberikan konteks, emosi, dan makna pada angka-angka yang kamu sajikan.
+Otak manusia lebih mudah mencerna dan mengingat cerita dibandingkan dengan data mentah atau statistik. Sebuah cerita memberikan konteks, emosi, dan makna pada angka-angka yang kamu sajikan. Mari kita lihat perbedaannya:
 
 <Row fillWidth mobileDirection="column" gap="16" marginTop="16" marginBottom="16">
     <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
         <Text variant="heading-strong-s">Tanpa Cerita</Text>
         <Text variant="body-default-s" onBackground="neutral-weak">"Penjualan kuartal ini naik 15%."</Text>
-        <Feedback variant="danger" description="Oke, terus kenapa? Apa artinya ini bagi kita?"/>
+        <Feedback variant="danger" description="Informasi ini benar, tapi terasa hambar. Audiens mungkin bertanya: 'Oke, terus kenapa? Apa artinya ini bagi kita?' Tidak ada dorongan untuk bertindak."/>
     </Column>
     <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
         <Text variant="heading-strong-s">Dengan Cerita</Text>
         <Text variant="body-default-s" onBackground="neutral-weak">"Berkat kampanye marketing 'Semangat Pagi' yang kita luncurkan bulan lalu, kita berhasil menarik 30% pelanggan baru yang mendorong kenaikan penjualan total sebesar 15% di kuartal ini. Ini adalah validasi bahwa investasi kita di segmen pagi hari sangat efektif."</Text>
-        <Feedback variant="success" description="Jelas, berdampak, dan memberikan arah untuk langkah selanjutnya."/>
+        <Feedback variant="success" description="Jauh lebih jelas, berdampak, dan memberikan arah untuk langkah selanjutnya. Audiens kini mengerti konteks dan implikasinya."/>
     </Column>
 </Row>
 
-## Tiga Elemen Kunci Data Storytelling
+## Tiga Elemen Kunci Data Storytelling: Resep Rahasia Narasi Data
 
-Untuk membangun cerita yang kuat, kamu memerlukan tiga elemen utama:
+Untuk membangun cerita data yang kuat dan tak terlupakan, kamu memerlukan tiga elemen utama yang saling melengkapi. Ibarat sebuah resep, jika salah satunya kurang, rasanya tidak akan sempurna.
 
-1.  **Data (The What):** Ini adalah fondasimu. Analisis yang akurat dan relevan adalah titik awal yang tidak bisa ditawar.
-2.  **Narasi (The So What):** Ini adalah alur ceritamu. Kamu harus menjelaskan apa arti dari data tersebut, menghubungkan titik-titik, dan membangun argumen yang koheren.
-3.  **Visualisasi (The See What):** Grafik dan bagan yang tepat akan membuat narasimu lebih mudah dipahami dan diingat. Visualisasi bukanlah tujuan akhir, melainkan alat untuk memperkuat ceritamu.
+<AccordionGroup 
+    items={[
+      {
+        title: "1. Data (The What): Fondasi yang Kokoh",
+        content: <Text variant="body-default-s" onBackground="neutral-weak">Ini adalah bahan baku utamamu. Analisis yang akurat, data yang bersih, dan temuan yang relevan adalah titik awal yang tidak bisa ditawar. Tanpa data yang solid, ceritamu hanyalah fiksi. Pastikan kamu memahami apa yang data katakan sebelum mencoba menceritakannya.</Text>
+      },
+      {
+        title: "2. Narasi (The So What): Alur Cerita yang Mengikat",
+        content: <Text variant="body-default-s" onBackground="neutral-weak">Narasi adalah benang merah yang menghubungkan semua titik data. Ini adalah 'mengapa' dan 'apa artinya'. Kamu harus menjelaskan implikasi dari data tersebut, membangun argumen yang koheren, dan memandu audiens dari satu wawasan ke wawasan berikutnya. Ini tentang menjawab pertanyaan: 'Jadi, apa yang harus saya pedulikan dari semua angka ini?'</Text>
+      },
+      {
+        title: "3. Visualisasi (The See What): Jendela Menuju Pemahaman",
+        content: <Text variant="body-default-s" onBackground="neutral-weak">Grafik dan bagan yang tepat adalah alat visual untuk memperkuat narasimu. Visualisasi yang efektif tidak hanya menampilkan data, tetapi juga menyoroti pesan utama, memudahkan audiens untuk melihat pola dan tren yang kamu ingin mereka pahami. Ingat, visualisasi bukanlah tujuan akhir, melainkan jembatan menuju pemahaman.</Text>
+      }
+    ]}
+/>
 
-### Contoh Visualisasi yang Bercerita
+### Contoh Visualisasi yang Bercerita: Lebih dari Sekadar Angka
 
-Daripada hanya menyajikan diagram batang biasa, kita bisa menambahkan lapisan konteks untuk menyoroti pesan utama.
+Daripada hanya menyajikan diagram batang biasa, kita bisa menambahkan lapisan konteks dan narasi visual untuk menyoroti pesan utama. Perhatikan bagaimana kode di bawah ini tidak hanya memplot data, tetapi juga menambahkan anotasi dan pemisahan visual untuk menceritakan kisah pertumbuhan penjualan setelah sebuah kampanye.
 
 <Column fillWidth gap="-1" marginBottom="16" marginTop="8">
 <CodeBlock
     radius="none"
+    codeHeight={24}
     topRadius="l"
-    preview={<Media src="/images/projects/work-01/image-03.png" alt="Contoh visualisasi data yang baik" sizes="640px" aspectRatio="16/9" radius="l" />}
+    preview={<Media src="/images/blog/chart.png" alt="Contoh visualisasi data yang baik" sizes="640px" aspectRatio="16/9" radius="l" />}
     codes={[
       {
         code:
-`// Bayangkan ini adalah output dari library visualisasi datamu
-create_bar_chart(
-  data=monthly_sales,
-  x='Bulan',
-  y='Penjualan',
-  title='Pertumbuhan Penjualan Setelah Kampanye',
-  highlight_after='Maret' // Menambahkan anotasi atau warna berbeda
-)`
-,
+`import matplotlib.pyplot as plt
+
+bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober']
+penjualan = [100, 108, 110, 160, 180, 200, 220, 240, 260, 280]
+
+warna = ['#4A90E2' if b in ['Januari', 'Februari', 'Maret'] else '#F5A623' for b in bulan]
+
+fig_width = 16
+fig_height = 9
+
+plt.figure(figsize=(fig_width, fig_height))
+bars = plt.bar(bulan, penjualan, color=warna)
+
+for bar in bars:
+    yval = bar.get_height()
+    plt.text(bar.get_x() + bar.get_width()/2.0, yval + 6, f'{yval}', ha='center', va='bottom', fontsize=14)
+
+plt.title('Pertumbuhan Penjualan Setelah Kampanye', fontsize=24, pad=20)
+plt.xlabel('Bulan', fontsize=18, labelpad=10)
+plt.ylabel('Penjualan', fontsize=18, labelpad=10)
+plt.xticks(fontsize=14, rotation=15)
+plt.yticks(fontsize=14)
+
+plt.axvline(x=2.5, color='gray', linestyle='--', linewidth=1.5)
+plt.text(3.1, max(penjualan), 'Setelah Kampanye', color='#F5A623', fontsize=16)
+
+
+plt.subplots_adjust(bottom=0.15, top=0.85)
+plt.tight_layout()
+plt.show()
+`,
         language: "python",
         label: "Contoh Kode"
       }
     ]}
 />
 <Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
-    <Text variant="body-default-s" onBackground="neutral-weak">Visualisasi di atas tidak hanya menunjukkan data, tapi juga menyoroti titik perubahan penting, membuatnya lebih mudah untuk 'dibaca'.</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak" padding="4">Visualisasi ini tidak hanya menampilkan angka, tetapi juga memandu mata audiens untuk melihat dampak kampanye dengan jelas, menggunakan warna dan anotasi.</Text>
 </Row>
 </Column>
 
-Menjadi seorang pencerita data berarti kamu tidak hanya menyajikan temuan, tetapi juga menginspirasi tindakan. Jadi, lain kali kamu menyelesaikan sebuah analisis, mundurlah sejenak dan tanyakan pada dirimu sendiri: **"Apa cerita yang ingin saya sampaikan?"**
+Menjadi seorang pencerita data berarti kamu tidak hanya menyajikan temuan, tetapi juga menginspirasi tindakan. Jadi, lain kali kamu menyelesaikan sebuah analisis, mundurlah sejenak dan tanyakan pada dirimu sendiri: **"Apa cerita yang ingin saya sampaikan?"** Dengan begitu, analisismu akan lebih dari sekadar angka; ia akan menjadi sebuah kisah yang berkesan dan mendorong perubahan.
