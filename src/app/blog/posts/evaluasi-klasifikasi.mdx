@@ -1,0 +1,141 @@
+---
+title: "Bukan Cuma Akurasi: Membaca Hasil Klasifikasi ML"
+publishedAt: "2024-12-01"
+summary: "Model klasifikasi Anda sudah jadi, tapi bagaimana cara tahu kalau hasilnya benar-benar bagus? Akurasi saja tidak cukup! Mari kita bedah metrik evaluasi penting lainnya."
+tag: "Evaluasi Model"
+image: "/images/person/khalika.png"
+---
+
+Setelah melatih model klasifikasi, langkah selanjutnya yang krusial adalah mengevaluasinya. Seringkali, metrik pertama yang dilihat adalah **Akurasi**. "Model saya akurasinya 95%!" terdengar hebat, bukan? Tapi, akurasi bisa sangat menipu, terutama pada dataset yang tidak seimbang (*imbalanced dataset*).
+
+Bayangkan Anda membangun model untuk mendeteksi penyakit langka yang hanya menyerang 1% populasi. Jika model Anda selalu memprediksi "tidak sakit", akurasinya akan 99%! Tapi, apakah itu model yang bagus? Tentu tidak, karena ia gagal mendeteksi semua kasus positif yang sebenarnya. Inilah mengapa kita perlu alat ukur yang lebih canggih.
+
+Untuk memahami performa model klasifikasi secara menyeluruh, kita perlu melihat lebih dari sekadar akurasi. Mari kita kenali beberapa metrik penting lainnya, yang akan memberikan gambaran lebih jujur tentang kinerja model Anda.
+
+## Matriks Kebingungan (Confusion Matrix): Peta Jalan Evaluasi Anda
+
+Sebelum menyelami metrik-metrik yang lebih kompleks, kita harus memahami **Confusion Matrix**. Ini adalah tabel sederhana namun sangat powerful yang merangkum performa model klasifikasi dengan membandingkan prediksi model dengan nilai sebenarnya. Anggap saja ini adalah 'peta jalan' yang menunjukkan di mana model Anda benar dan di mana ia 'bingung'.
+
+<Table 
+  data={{
+    headers: [
+      { content: "", key: "header" },
+      { content: "Prediksi Positif", key: "pred_pos" },
+      { content: "Prediksi Negatif", key: "pred_neg" }
+    ],
+    rows: [
+      ["Aktual Positif", "True Positive (TP)", "False Negative (FN)"],
+      ["Aktual Negatif", "False Positive (FP)", "True Negative (TN)"]
+    ]
+  }}
+/>
+
+Mari kita pahami setiap komponennya:
+
+<AccordionGroup 
+    items={[
+      {
+        title: "True Positive (TP)",
+        content: <Text variant="body-default-s" onBackground="neutral-weak">Ini adalah skenario ideal: model memprediksi sesuatu sebagai positif, dan memang benar-benar positif. Contoh: Model memprediksi email sebagai spam, dan email itu memang spam.</Text>
+      },
+      {
+        title: "True Negative (TN)",
+        content: <Text variant="body-default-s" onBackground="neutral-weak">Model memprediksi sesuatu sebagai negatif, dan memang benar-benar negatif. Contoh: Model memprediksi email bukan spam, dan email itu memang bukan spam.</Text>
+      },
+      {
+        title: "False Positive (FP)",
+        content: <Text variant="body-default-s" onBackground="neutral-weak">Ini adalah 'kesalahan Tipe I': model memprediksi sesuatu sebagai positif, tapi sebenarnya negatif. Contoh: Model memprediksi email penting sebagai spam (dan masuk ke folder spam Anda!). Ini seringkali memiliki konsekuensi yang tidak diinginkan.</Text>
+      },
+      {
+        title: "False Negative (FN)",
+        content: <Text variant="body-default-s" onBackground="neutral-weak">Ini adalah 'kesalahan Tipe II': model memprediksi sesuatu sebagai negatif, tapi sebenarnya positif. Contoh: Model memprediksi email spam sebagai bukan spam (dan masuk ke kotak masuk Anda!). Terkadang, kesalahan ini bisa lebih berbahaya daripada False Positive, tergantung konteksnya.</Text>
+      }
+    ]}
+/>
+
+Dari sinilah metrik-metrik lainnya diturunkan, memberikan kita gambaran yang lebih nuansa tentang performa model.
+
+## Metrik Evaluasi Klasifikasi: Lebih dari Sekadar Angka Tunggal
+
+### 1. Akurasi (Accuracy)
+
+Akurasi adalah proporsi prediksi yang benar dari total prediksi. Ini adalah metrik yang paling mudah dipahami dan seringkali menjadi titik awal.
+
+`Accuracy = (TP + TN) / (TP + TN + FP + FN)`
+
+<AccordionGroup 
+    items={[
+      {
+        title: "Kapan Akurasi Relevan?",
+        content: <Text variant="body-default-s" onBackground="neutral-weak">Akurasi paling relevan ketika dataset Anda seimbang (jumlah kelas positif dan negatif relatif sama) dan ketika biaya dari False Positive dan False Negative relatif sama pentingnya. Namun, seperti contoh deteksi penyakit langka di awal, akurasi bisa sangat menyesatkan jika dataset tidak seimbang.</Text>
+      }
+    ]}
+/>
+
+### 2. Presisi (Precision)
+
+Presisi menjawab pertanyaan: "Dari semua yang diprediksi positif oleh model, berapa banyak yang benar-benar positif?" Ini mengukur keakuratan prediksi positif model Anda.
+
+`Precision = TP / (TP + FP)`
+
+<AccordionGroup 
+    items={[
+      {
+        title: "Kapan Presisi Penting?",
+        content: <Text variant="body-default-s" onBackground="neutral-weak">Presisi sangat penting ketika biaya dari False Positive (kesalahan memprediksi positif padahal negatif) sangat tinggi. Contoh klasik adalah deteksi spam: Anda tidak ingin email penting Anda masuk ke folder spam (False Positive), jadi presisi tinggi sangat diinginkan.</Text>
+      }
+    ]}
+/>
+
+### 3. Recall (Sensitivitas / True Positive Rate)
+
+Recall menjawab pertanyaan: "Dari semua yang sebenarnya positif, berapa banyak yang berhasil dideteksi oleh model?" Ini mengukur kemampuan model untuk menemukan semua kasus positif.
+
+`Recall = TP / (TP + FN)`
+
+<AccordionGroup 
+    items={[
+      {
+        title: "Kapan Recall Penting?",
+        content: <Text variant="body-default-s" onBackground="neutral-weak">Recall sangat penting ketika biaya dari False Negative (kesalahan memprediksi negatif padahal positif) sangat tinggi. Contoh: deteksi penyakit serius (Anda tidak ingin orang sakit didiagnosis sehat, karena bisa berakibat fatal) atau deteksi penipuan (Anda tidak ingin transaksi penipuan lolos dari deteksi).</Text>
+      }
+    ]}
+/>
+
+### 4. F1-Score
+
+F1-Score adalah rata-rata harmonis dari Presisi dan Recall. Ini adalah metrik yang baik ketika Anda membutuhkan keseimbangan antara Presisi dan Recall, terutama pada dataset yang tidak seimbang.
+
+`F1-Score = 2 * (Precision * Recall) / (Precision + Recall)`
+
+<AccordionGroup 
+    items={[
+      {
+        title: "Kapan F1-Score Berguna?",
+        content: <Text variant="body-default-s" onBackground="neutral-weak">Gunakan F1-Score ketika Anda tidak bisa mengorbankan Presisi maupun Recall secara signifikan. Ini memberikan gambaran tunggal tentang performa model yang seimbang, sangat berguna pada masalah klasifikasi dengan kelas yang tidak seimbang.</Text>
+      }
+    ]}
+/>
+
+### 5. ROC Curve dan AUC (Area Under the Curve)
+
+*   **ROC Curve (Receiver Operating Characteristic Curve)**: Ini adalah grafik yang menunjukkan performa model klasifikasi pada semua ambang batas klasifikasi yang mungkin. Kurva ini memplot True Positive Rate (Recall) terhadap False Positive Rate.
+*   **AUC (Area Under the Curve)**: AUC adalah area di bawah kurva ROC. Nilai AUC berkisar antara 0 hingga 1. Semakin dekat ke 1, semakin baik modelnya dalam membedakan antara kelas positif dan negatif.
+
+<Media src="/images/blog/chart.png" alt="Contoh ROC Curve" aspectRatio="16/9" radius="l" />
+*<center>Contoh ROC Curve. Semakin melengkung ke kiri atas, semakin baik modelnya dalam membedakan kelas.</center>*
+
+<AccordionGroup 
+    items={[
+      {
+        title: "Kapan ROC AUC Digunakan?",
+        content: <Text variant="body-default-s" onBackground="neutral-weak">ROC AUC sangat berguna ketika Anda peduli seberapa baik model membedakan antara kelas positif dan negatif pada berbagai ambang batas, dan terutama ketika dataset Anda tidak seimbang. Ini memberikan gambaran performa model secara keseluruhan, terlepas dari ambang batas klasifikasi yang spesifik.</Text>
+      }
+    ]}
+/>
+
+### Kesimpulan: Memilih Metrik yang Tepat, Memahami Konteks
+
+Memilih metrik evaluasi yang tepat adalah sama pentingnya dengan membangun model itu sendiri. Tidak ada satu metrik pun yang 'terbaik' untuk semua skenario. Selalu pertimbangkan konteks masalah bisnis Anda, konsekuensi dari setiap jenis kesalahan (False Positive vs. False Negative), dan karakteristik dataset Anda (apakah seimbang atau tidak).
+
+Dengan memahami metrik-metrik ini secara mendalam, Anda bisa mendapatkan gambaran yang jauh lebih akurat tentang seberapa baik model klasifikasi Anda bekerja di dunia nyata, dan membuat keputusan yang lebih cerdas dalam mengoptimalkan model Anda.
