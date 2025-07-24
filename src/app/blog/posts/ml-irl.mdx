@@ -1,0 +1,78 @@
+---
+title: "Machine Learning Ada di Mana-Mana: Contoh Nyata yang Kamu Gunakan Setiap Hari"
+publishedAt: "2025-07-26"
+summary: "Machine learning mungkin terdengar seperti konsep futuristik, tapi sebenarnya ia sudah menjadi bagian tak terpisahkan dari kehidupan digital kita. Yuk, intip beberapa contohnya!"
+tag: "Machine Learning"
+image: "/images/gallery/horizontal-3.jpg"
+---
+
+Ketika mendengar istilah **Machine Learning (ML)**, banyak orang mungkin membayangkan robot super cerdas atau mobil terbang. Kenyataannya, ML jauh lebih dekat dan lebih praktis dari itu. Tanpa sadar, kamu berinteraksi dengan aplikasi machine learning puluhan kali setiap hari.
+
+Machine learning adalah cabang dari kecerdasan buatan (AI) yang memberikan komputer kemampuan untuk "belajar" dari data tanpa diprogram secara eksplisit. Mari kita lihat beberapa contoh nyata.
+
+## Rekomendasi Konten: "Kamu Mungkin Juga Suka..."
+
+<Row fillWidth gap="16" marginTop="16" marginBottom="16" mobilecolumns="1">
+  <Column fillWidth>
+    <Media
+      src="/images/projects/project-01/cover-02.jpg"
+      aspectRatio="16/9"
+      radius="l"
+      sizes="400px"
+    />
+  </Column>
+  <Column fillWidth gap="8">
+    <Text variant="heading-strong-m">Netflix & Spotify</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">Pernahkah kamu heran mengapa Netflix bisa tahu persis film seri yang akan
+      kamu lahap selanjutnya? Atau bagaimana Spotify membuat playlist "Discover
+      Weekly" yang terasa sangat personal?</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">Ini semua berkat **sistem rekomendasi** berbasis ML. Algoritma ini
+      menganalisis riwayat tontonan/dengarmu, membandingkannya dengan jutaan
+      pengguna lain yang punya selera mirip, dan kemudian merekomendasikan
+      konten yang kemungkinan besar akan kamu nikmati.</Text>
+  </Column>
+</Row>
+
+## Filter Spam: Menjaga Kotak Masukmu Tetap Bersih
+
+Ini adalah salah satu aplikasi ML paling tua dan paling berhasil. Dulu, filter spam bekerja berdasarkan aturan-aturan sederhana (misalnya, jika email mengandung kata "gratis" atau "promo"). Tapi para spammer cepat belajar.
+
+<CodeBlock
+    marginBottom="16" marginTop="8"
+    codes={[
+      {
+        code:
+`def simple_spam_filter(email_text):
+    if "beli sekarang" in email_text or "penawaran terbatas" in email_text:
+        return "SPAM"
+    return "INBOX"
+
+# Model ML jauh lebih canggih dari ini!
+
+# model.predict(email_features) -> 'SPAM' or 'INBOX'`,
+
+        language: "python",
+        label: "Contoh Logika Filter"
+      }
+    ]}
+
+/>
+
+Sekarang, filter spam menggunakan model ML (seperti Naive Bayes atau Support Vector Machines) untuk menganalisis ribuan sinyal berbeda: pengirim, struktur kalimat, penggunaan tautan, dan banyak lagi. Model ini terus belajar dari email-email baru yang kamu tandai sebagai spam, membuatnya semakin pintar dari waktu ke waktu.
+
+## Asisten Virtual dan Pengenalan Suara
+
+- "Hey Siri, setel alarm jam 6 pagi."
+- "OK Google, apa itu machine learning?"
+
+<Feedback
+  icon
+  variant="info"
+  title="Dari Suara ke Teks"
+  description="Kemampuan asisten virtual untuk memahami perintah lisanmu adalah hasil dari model 'Natural Language Processing' (NLP) dan 'Speech-to-Text' yang sangat kompleks."
+  marginBottom="24"
+/>
+
+Model-model ini dilatih pada jutaan jam rekaman suara untuk belajar memetakan gelombang suara ke dalam kata-kata dan kalimat. Setiap kali kamu menggunakan asisten virtual, kamu sebenarnya membantu melatih model tersebut menjadi lebih baik dalam memahami aksen dan gaya bicaramu.
+
+Machine learning bukan lagi fiksi ilmiah. Ia adalah teknologi fundamental yang membentuk cara kita berinteraksi dengan dunia digital, membuat pengalaman kita lebih personal, efisien, dan aman. Jadi, lain kali Spotify memutarkan lagu yang pas di hatimu, ingatlah ada sedikit 'sihir' machine learning di baliknya.
