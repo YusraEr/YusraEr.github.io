@@ -1,0 +1,101 @@
+---
+title: "Memilih Alat yang Tepat: Kapan Menggunakan Regresi dan Kapan Memilih Klasifikasi?"
+publishedAt: "2024-11-01"
+summary: "Regresi dan klasifikasi adalah dua pilar utama dalam supervised machine learning. Memahami perbedaan fundamental di antara keduanya adalah langkah pertama untuk membangun model yang efektif."
+tag: "Machine Learning"
+---
+
+Dalam dunia *supervised machine learning*, tujuan utama kita adalah melatih model agar bisa memprediksi *output* berdasarkan *input* yang telah kita berikan. Ini seperti mengajari anak untuk mengenali sesuatu atau memprediksi sebuah angka. Namun, tidak semua prediksi diciptakan sama. Sifat dari *output* yang ingin kita ramalkan inilah yang menentukan jenis masalah yang kita hadapi. Dua jenis yang paling umum dan fundamental adalah **regresi** dan **klasifikasi**.
+
+Memilih antara kedua pendekatan ini adalah salah satu keputusan pertama dan paling krusial dalam sebuah proyek machine learning. Kesalahan di tahap ini bisa membuat seluruh upaya kita melenceng. Mari kita bedah perbedaannya, agar kamu bisa memilih alat yang paling pas untuk 'pekerjaan' datamu.
+
+## Regresi: Memprediksi Angka, Bukan Sekadar 'Ya' atau 'Tidak'
+
+Gunakan regresi ketika target yang ingin Anda prediksi adalah sebuah nilai numerik yang kontinu. Artinya, nilai tersebut bisa berada di mana saja dalam sebuah rentang, bukan hanya kategori tertentu. Pikirkan tentang pertanyaan seperti "Berapa banyak?" atau "Berapa harganya?"
+
+<Feedback icon variant="info" title="Contoh Masalah Regresi di Dunia Nyata" description="- Memprediksi harga sebuah rumah berdasarkan luas tanah, jumlah kamar, dan lokasi. Hasilnya bisa Rp 500 juta, Rp 750 juta, atau Rp 1,2 miliar—nilai yang kontinu.\n- Memperkirakan jumlah penjualan produk bulan depan berdasarkan data historis dan anggaran pemasaran yang akan dikeluarkan.\n- Menebak suhu besok berdasarkan data cuaca hari ini dan beberapa hari sebelumnya." />
+
+### Algoritma Populer untuk Regresi
+
+Ada berbagai algoritma yang bisa kamu gunakan untuk tugas regresi, masing-masing dengan karakteristiknya sendiri:
+
+<AccordionGroup 
+    items={[
+      {
+        title: "Linear Regression",
+        content: <Text variant="body-default-s" onBackground="neutral-weak">Ini adalah algoritma paling dasar, mencoba menemukan hubungan linear (garis lurus) antara input dan output. Sederhana namun powerful untuk banyak kasus.</Text>
+      },
+      {
+        title: "Decision Tree Regression",
+        content: <Text variant="body-default-s" onBackground="neutral-weak">Menggunakan struktur seperti pohon keputusan untuk mempartisi data dan membuat prediksi. Mirip dengan cara kita membuat keputusan bercabang.</Text>
+      },
+      {
+        title: "Support Vector Regression (SVR)",
+        content: <Text variant="body-default-s" onBackground="neutral-weak">Versi regresi dari Support Vector Machines, yang mencoba menemukan 'garis' terbaik yang meminimalkan error.</Text>
+      },
+      {
+        title: "Gradient Boosting Regressors (XGBoost, LightGBM)",
+        content: <Text variant="body-default-s" onBackground="neutral-weak">Ini adalah algoritma ensemble yang sangat kuat dan sering memenangkan berbagai kompetisi data. Mereka membangun banyak 'pohon' keputusan kecil secara berurutan untuk meningkatkan akurasi.</Text>
+      }
+    ]}
+/>
+
+<Media src="/images/blog/chart.png" alt="Contoh Grafik Regresi Linear" aspectRatio="16/9" radius="l" />
+*<center>Visualisasi sederhana dari regresi linear yang mencoba menemukan garis terbaik yang cocok dengan data, menunjukkan bagaimana model memprediksi nilai kontinu.</center>*
+
+## Klasifikasi: Memprediksi Kategori, Bukan Sekadar Angka
+
+Gunakan klasifikasi ketika target yang ingin Anda prediksi adalah sebuah label atau kategori dari sekumpulan pilihan yang terbatas (diskrit). Pikirkan tentang pertanyaan seperti "Yang mana?" atau "Apakah ini A atau B?"
+
+<Feedback icon variant="info" title="Contoh Masalah Klasifikasi di Dunia Nyata" description="- Menentukan apakah sebuah email adalah 'spam' atau 'bukan spam' (Klasifikasi Biner: hanya ada dua kategori).\n- Mendiagnosis apakah sebuah tumor 'ganas' atau 'jinak' (Klasifikasi Biner).\n- Mengenali jenis hewan dalam sebuah gambar: 'kucing', 'anjing', atau 'burung' (Klasifikasi Multi-kelas: lebih dari dua kategori)." />
+
+### Algoritma Populer untuk Klasifikasi
+
+Sama seperti regresi, klasifikasi juga memiliki beragam algoritma yang bisa kamu pilih:
+
+<AccordionGroup 
+    items={[
+      {
+        title: "Logistic Regression",
+        content: <Text variant="body-default-s" onBackground="neutral-weak">Meskipun namanya "regresi", ini adalah algoritma klasifikasi. Ia memprediksi probabilitas sebuah instance milik kelas tertentu, lalu mengklasifikasikannya berdasarkan ambang batas probabilitas.</Text>
+      },
+      {
+        title: "K-Nearest Neighbors (KNN)",
+        content: <Text variant="body-default-s" onBackground="neutral-weak">Mengklasifikasikan data baru berdasarkan mayoritas 'tetangga' terdekatnya. Mirip dengan prinsip 'bergaul dengan siapa, jadi seperti itu'.</Text>
+      },
+      {
+        title: "Support Vector Machines (SVM)",
+        content: <Text variant="body-default-s" onBackground="neutral-weak">Mencoba menemukan 'hyperplane' (garis atau bidang) terbaik yang memisahkan antar kelas dengan margin terbesar.</Text>
+      },
+      {
+        title: "Random Forest & Gradient Boosting Classifiers",
+        content: <Text variant="body-default-s" onBackground="neutral-weak">Versi klasifikasi dari algoritma ensemble yang kuat, mirip dengan versi regresinya, namun dioptimalkan untuk tugas klasifikasi.</Text>
+      }
+    ]}
+/>
+
+## Perbandingan Singkat: Regresi vs. Klasifikasi
+
+Untuk membuatnya lebih jelas, mari kita bandingkan keduanya secara langsung dalam sebuah tabel. Ini akan membantumu melihat perbedaan inti dari kedua jenis masalah ini.
+
+<Table 
+  data={{
+    headers: [
+      { content: "Aspek", key: "aspek" },
+      { content: "Regresi", key: "regresi" },
+      { content: "Klasifikasi", key: "klasifikasi" }
+    ],
+    rows: [
+      ["Tipe Output", "Nilai numerik kontinu (misalnya, 10.5, 500, -23.4)", "Label kategori diskrit (misalnya, 'Ya'/'Tidak', 'Merah'/'Biru', 'Kucing'/'Anjing'/'Burung')"],
+      ["Pertanyaan Kunci", "Berapa banyak/harga?", "Yang mana/apa ini?"],
+      ["Contoh Aplikasi", "Prediksi harga saham, perkiraan suhu", "Deteksi penipuan kartu kredit, diagnosis penyakit"],
+      ["Metrik Evaluasi Umum", "Mean Absolute Error (MAE), Root Mean Squared Error (RMSE), R-squared", "Akurasi, Presisi, Recall, F1-Score, ROC AUC"]
+    ]
+  }}
+/>
+
+### Kesimpulan: Kompas Pertamamu dalam Machine Learning
+
+Memahami perbedaan fundamental antara regresi dan klasifikasi adalah dasar yang tak tergantikan dalam perjalananmu di dunia machine learning. Kesalahan dalam mengidentifikasi jenis masalah akan membawa Anda ke jalan yang salah sejak awal—memilih algoritma yang salah, menggunakan metrik evaluasi yang salah, dan pada akhirnya, membangun model yang tidak berguna.
+
+Jadi, sebelum Anda menulis baris kode pertama atau bahkan mengumpulkan data, selalu tanyakan pada diri sendiri: **"Apakah saya mencoba memprediksi sebuah angka, atau saya mencoba menetapkan sebuah label?"** Jawaban atas pertanyaan itu akan menjadi kompas pertamamu, membimbingmu menuju solusi yang tepat dan efektif.
