@@ -113,27 +113,23 @@ const about = {
     ),
   },
   work: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Work Experience",
     experiences: [
       {
-        company: "Hasanuddin University",
+        company: "Ikhtiar Mosque of Hasanuddin University",
         timeframe: "2025 - Present",
-        role: "Programming Laboratory Assistant",
+        role: "Administrator and Genitor Coordinator",
         achievements: [
           <>
-            Assisted students in learning fundamental programming concepts
-            including data structures, algorithms, and software development
-            methodologies.
+            Coordinated events, improving client engagement and satisfaction.
           </>,
           <>
-            Conducted laboratory sessions and workshops on Python programming,
-            data analysis, and machine learning fundamentals.
+            Created detailed reports, aiding strategic decision-making.
           </>,
           <>
-            Mentored over 90 students throughout the semester, resulting in
-            improved academic performance and programming proficiency.
-          </>,
+            Manage websites and social media of Campus Mosque
+          </>
         ],
         images: [],
       },
@@ -153,6 +149,27 @@ const about = {
           <>
             Coordinated cross-functional teams to deliver multimedia projects,
             improving workflow efficiency through process automation.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "Hasanuddin University",
+        timeframe: "2025",
+        role: "Programming Laboratory Assistant",
+        achievements: [
+          <>
+            Assisted students in learning fundamental programming concepts
+            including data structures, algorithms, and software development
+            methodologies.
+          </>,
+          <>
+            Conducted laboratory sessions and workshops on Python programming,
+            data analysis, and machine learning fundamentals.
+          </>,
+          <>
+            Mentored over 90 students throughout the semester, resulting in
+            improved academic performance and programming proficiency.
           </>,
         ],
         images: [],
