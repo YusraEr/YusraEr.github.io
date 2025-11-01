@@ -1,0 +1,195 @@
+---
+title: "Pengantar Unit Testing"
+publishedAt: "2025-10-21"
+summary: "Kita 'turun' dari high-level plan ke fondasi kode. Mengapa Unit Testing adalah kunci untuk coding tanpa khawatir dan apa itu pola 'AAA'?"
+tag: "Development"
+---
+
+Di *post* blog sebelumnya, kita telah menjelajahi dunia *testing* dari level strategis (`Test Plan`), level pengguna (`UI/UX Testing`), hingga level taktikal (`Test Case`). Sekarang, kita tiba di fondasi dari semua piramida kualitas. Materi dari Kelompok 5 kali ini adalah tentang **Unit Testing**.
+
+Ini adalah "jaring pengaman" bagi kami, para *developer*.
+
+### Apa Sebenarnya Unit Testing Itu?
+
+<Feedback
+    icon
+    variant="info"
+    title="Apa Itu Unit Testing?"
+    description="Unit testing adalah pengujian yang berfokus pada 'unit' terkecil dari perangkat lunak yang bisa diisolasi: satu fungsi (function), satu metode (method), atau satu kelas (class). Ini adalah pengujian paling awal yang dilakukan oleh developer."
+    marginBottom="24"
+/>
+
+Materi ini menjelaskannya dengan **Piramida Pengujian**. *End-to-End Testing* (E2E) ada di puncak: lambat dan mahal. *Integration Testing* ada di tengah. Dan **Unit Testing** ada di dasar: cepat, murah, dan seharusnya menjadi yang paling banyak jumlahnya.
+
+Anologi terbaiknya? Saat merakit mobil, kita tidak langsung menguji mobilnya. Kita uji dulu mesinnya, remnya, lampunya, secara terpisah. Itulah *unit testing*.
+
+### Mengapa Ini Sangat Penting Bagi Developer?
+
+Ini bukan sekadar "tugas tambahan". Bagi seorang *developer*, *unit testing* adalah sahabat terbaik. Materi Kelompok 5 merangkum 6 alasan utamanya:
+
+<Grid fillWidth gap="16" columns="2" mobileColumns="1" marginBottom="24" marginTop="16">
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Text variant="heading-strong-s">1. Mendeteksi Bug Lebih Awal</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Menemukan *bug* di level fungsi jauh lebih mudah dan murah daripada di level aplikasi yang sudah terintegrasi.
+    </Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Text variant="heading-strong-s">2. Meningkatkan Kualitas Kode</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Memaksa kita menulis kode yang *testable*, yang biasanya berarti kode yang lebih modular, bersih, dan tidak saling bergantung.
+    </Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Text variant="heading-strong-s">3. Dokumentasi yang "Hidup"</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      *Test file* adalah dokumentasi terbaik. Ia menunjukkan bagaimana sebuah fungsi seharusnya digunakan dan apa hasil yang diharapkan.
+    </Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Text variant="heading-strong-s">4. Mempermudah Refactoring</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Ingin mengubah atau memperbaiki kode? Lakukan saja. Selama semua *unit test* tetap lolos ("hijau"), kita yakin tidak merusak fungsionalitas yang ada.
+    </Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Text variant="heading-strong-s">5. Menghemat Waktu & Biaya</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Lebih cepat menemukan *bug* berarti lebih sedikit waktu untuk *debugging* dan lebih sedikit biaya perbaikan.
+    </Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Text variant="heading-strong-s">6. Meningkatkan Kepercayaan Diri</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Ini adalah manfaat emosional. Kita bisa merilis kode dengan percaya diri, tahu bahwa "jaring pengaman" kita sudah terpasang.
+    </Text>
+  </Column>
+</Grid>
+
+
+### Pola Emas: Arrange, Act, Assert (AAA)
+
+Bagaimana cara menulis *unit test* yang baik? Ada pola universal yang disebut **AAA (Arrange, Act, Assert)**. Ini membuat tes kita bersih, terstruktur, dan mudah dibaca.
+
+<Grid fillWidth gap="16" columns="3" mobileColumns="1" marginBottom="24">
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Text variant="heading-strong-s">1. Arrange (Persiapan)</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Siapkan semua kondisi awal dan *input* yang diperlukan untuk tes. Misalnya, membuat objek, mengisi variabel, atau *mocking* dependensi.
+    </Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Text variant="heading-strong-s">2. Act (Aksi)</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Panggil atau jalankan satu fungsi/metode yang ingin kita uji. Ini adalah inti dari tes, dan idealnya hanya satu baris kode.
+    </Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Text variant="heading-strong-s">3. Assert (Penegasan)</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Verifikasi bahwa hasil dari "Act" sesuai dengan yang kita harapkan. Apakah *output*-nya benar? Apakah statusnya berubah? Jika *assert* gagal, tes akan gagal.
+    </Text>
+  </Column>
+</Grid>
+
+### Tools (Framework) Populer
+
+Untuk melakukan *unit test*, kita tidak perlu manual. Ada banyak *framework* yang membantu, dan Kelompok 5 menyoroti tiga yang paling populer di ekosistemnya masing-masing:
+
+<Table 
+  marginBottom="24"
+  data={{
+    headers: [
+      { content: "Framework", key: "fw" },
+      { content: "Bahasa", key: "lang" },
+      { content: "Kapan Digunakan?", key: "kapan" }
+    ],
+    rows: [
+      ["JUnit 5", "Java", "Jika kita bekerja dengan Java atau bahasa berbasis JVM lainnya (Kotlin, Scala). Ini adalah 'de facto' di dunia Java."],
+      ["Jest", "JavaScript", "Jika menggunakan React, Node.js, TypeScript. Dibuat oleh Meta, dikenal karena konfigurasinya yang minimal."],
+      ["Pytest", "Python", "Untuk proyek Python apa pun. Dikenal karena sintaksnya yang sederhana, mudah dibaca, dan fitur 'fixtures' yang kuat."]
+    ]
+  }}
+/>
+
+### Contoh "Live Coding" (Versi Pytest)
+
+Materi ini juga menyertakan contoh kode. Mari kita lihat contoh `ShoppingCart` menggunakan **Pytest** dan pola AAA.
+
+<CodeBlock
+    marginBottom="24"
+    codes={[
+      {
+        code:
+`# File: shopping_cart.py
+from typing import List
+
+class ShoppingCart:
+    def __init__(self, max_size: int) -> None:
+        self.items: List[str] = []
+        self.max_size = max_size
+
+    def add(self, item: str):
+        if len(self.items) >= self.max_size:
+            raise OverflowError("cannot add more items")
+        self.items.append(item)
+
+    def get_items(self) -> List[str]:
+        return self.items
+`,
+        language: "python",
+        label: "Kode Aplikasi (shopping_cart.py)"
+      },
+      {
+        code:
+`# File: test_shopping_cart.py
+import pytest
+from shopping_cart import ShoppingCart
+
+def test_add_item():
+    # 1. Arrange
+    cart = ShoppingCart(5)
+    
+    # 2. Act
+    cart.add("apple")
+    
+    # 3. Assert
+    assert len(cart.get_items()) == 1
+    assert "apple" in cart.get_items()
+
+def test_add_overflow_error():
+    # 1. Arrange
+    cart = ShoppingCart(1)
+    cart.add("apple")
+    
+    # 2. Act & 3. Assert (digabung untuk mengecek error)
+    with pytest.raises(OverflowError):
+        cart.add("banana")
+`,
+        language: "python",
+        label: "Kode Tes (test_shopping_cart.py)"
+      }
+    ]}
+/>
+
+### Refleksi Akhir
+
+<Feedback
+    icon
+    variant="success"
+    title="Kesimpulan Utama"
+    description="Unit Testing adalah disiplin fundamental yang mengubah 'coding' dari sekadar 'membuat fitur' menjadi 'membangun aset yang andal'. Ini adalah praktik yang memisahkan developer amatir dari profesional, memberikan kita kepercayaan diri untuk melakukan refactoring dan merilis kode tanpa rasa khawatir."
+    marginBottom="16"
+/>
