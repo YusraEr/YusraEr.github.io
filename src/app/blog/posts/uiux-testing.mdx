@@ -1,0 +1,121 @@
+---
+title: "Mengupas UI/UX Testing"
+publishedAt: "2025-10-12"
+summary: "Melanjutkan perjalanan kita, kita beralih dari testing fungsional ke ranah pengalaman pengguna. Apa beda UI dan UX Testing, dan mengapa keduanya krusial?"
+tag: "UI/UX"
+---
+
+Setelah di *post* sebelumnya kita membahas "Strategi Testing" secara umum, perjalanan kita berlanjut ke area yang menurut saya paling menentukan apakah sebuah produk akan *dicintai* atau *ditinggalkan* oleh penggunanya. Rekan-rekan saya dari Kelompok 2 baru saja mempresentasikan materi mendalam tentang **UI/UX Testing**, dan ini membuka wawasan baru.
+
+<Feedback
+    icon
+    variant="info"
+    title="Pergeseran Fokus"
+    description="Jika materi sebelumnya fokus pada 'Apakah software ini bekerja?', materi kali ini fokus pada 'Bagaimana rasanya menggunakan software ini?'."
+    marginBottom="24"
+/>
+
+### Perbedaan Mendasar: UI vs. UX
+
+Hal pertama dan paling fundamental yang harus dipahami adalah perbedaan antara UI dan UX Testing. Keduanya sering disebut bersamaan, tapi tujuannya berbeda.
+
+<Grid fillWidth gap="16" columns="2" mobileColumns="1" marginBottom="24" marginTop="16">
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Icon name="rocket" onBackground="info-medium" size="m" />
+      <Text variant="heading-strong-s">UI (User Interface) Testing</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Ini adalah tentang **tampilan dan rasa**. Fokusnya adalah pada elemen visual: Apakah warnanya konsisten? Apakah ikonnya tampil? Apakah ukuran tombol sudah pas dan *layout* tidak berantakan? Singkatnya, apakah antarmukanya tampil dengan benar?
+    </Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Icon name="check" onBackground="success-medium" size="m" />
+      <Text variant="heading-strong-s">UX (User Experience) Testing</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Ini adalah tentang **perjalanan dan emosi**. Fokusnya pada pengalaman pengguna secara keseluruhan. Apakah alurnya intuitif? Apakah pengguna bisa menyelesaikan tugas (misal, membeli barang) dengan mudah tanpa merasa bingung?
+    </Text>
+  </Column>
+</Grid>
+
+### Deep Dive 1: Fokus Utama UI Testing
+
+Materi dari Kelompok 2 menguraikan tiga pilar utama dalam UI Testing:
+
+<Grid fillWidth gap="16" columns="3" mobileColumns="1" marginBottom="24">
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Text variant="heading-strong-s">1. Konsistensi Visual</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Memastikan semua halaman punya gaya yang seragam. Tombol "Login" di halaman A harus sama persis (warna, ukuran, posisi) dengan di halaman B. Ini bisa diuji dengan *checklist* manual atau alat *visual regression testing*.
+    </Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Text variant="heading-strong-s">2. Responsivitas</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Desain harus tetap nyaman dan fungsional di berbagai ukuran layar, dari *smartphone* 5" hingga laptop 14". Teks dan gambar harus tetap terbaca. Tools seperti BrowserStack dan Responsively App sangat membantu di sini.
+    </Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Text variant="heading-strong-s">3. Kompatibilitas</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Memastikan UI bekerja baik di berbagai *browser* (Chrome, Firefox, Safari) dan sistem operasi (Windows, macOS, Android, iOS). Animasi atau ikon mungkin tampil sempurna di Chrome tapi rusak di Safari.
+    </Text>
+  </Column>
+</Grid>
+
+### Deep Dive 2: Fokus Utama UX Testing
+
+UX Testing jauh lebih luas, ini tentang psikologi pengguna. Tiga fokus utamanya adalah:
+
+<AccordionGroup 
+  marginBottom="24"
+  marginTop="16"
+  items={[
+    {
+      title: "1. Alur Kerja (Workflow)",
+      content: <Text variant="body-default-s" onBackground="neutral-weak">Ini adalah proses iteratif. Dimulai dari perencanaan, rekrutmen pengguna, pelaksanaan sesi uji (di mana kita mengobservasi dan mewawancarai pengguna), analisis data, hingga iterasi desain. Contohnya, Shopify menggunakan *card sorting* untuk mengoptimalkan arsitektur informasi profil pakar mereka.</Text>
+    },
+    {
+      title: "2. Kegunaan (Usability)",
+      content: <Text variant="body-default-s" onBackground="neutral-weak">Ini mengacu pada seberapa mudah dan efektif pengguna berinteraksi dengan produk. *Usability testing* melibatkan pengguna nyata untuk melakukan tugas spesifik. Manfaatnya? Kita bisa menemukan cacat desain lebih awal, mengurangi biaya perbaikan, dan meningkatkan kepuasan pengguna.</Text>
+    },
+    {
+      title: "3. Aksesibilitas (Accessibility)",
+      content: <Text variant="body-default-s" onBackground="neutral-weak">Aspek yang sangat penting ini memastikan *semua orang* bisa menggunakan perangkat lunak, termasuk penyandang disabilitas (gangguan penglihatan, pendengaran, atau motorik). Pengujian ini melibatkan evaluasi standar WCAG, seperti penggunaan *screen reader*, navigasi keyboard, dan kontras warna yang memadai.</Text>
+    }
+  ]}
+/>
+
+### Metode Populer: Heuristic Evaluation
+
+Salah satu metode yang paling saya suka dari presentasi ini adalah **Heuristic Evaluation**. Ini adalah semacam "daftar periksa" yang dikembangkan oleh pakar *usability* untuk mengevaluasi antarmuka. Ada 10 prinsip utama:
+
+<AccordionGroup 
+  marginBottom="24"
+  items={[
+    { title: "1. Visibilitas Status Sistem", content: <Text variant="body-default-s" onBackground="neutral-weak">Sistem harus memberi tahu pengguna apa yang sedang terjadi (misal, loading bar).</Text> },
+    { title: "2. Kecocokan Sistem & Dunia Nyata", content: <Text variant="body-default-s" onBackground="neutral-weak">Gunakan bahasa dan ikon yang familiar bagi pengguna, bukan istilah teknis.</Text> },
+    { title: "3. Kontrol dan Kebebasan Pengguna", content: <Text variant="body-default-s" onBackground="neutral-weak">Sediakan 'pintu darurat' agar pengguna bisa membatalkan aksi (Undo/Redo).</Text> },
+    { title: "4. Konsistensi dan Standar", content: <Text variant="body-default-s" onBackground="neutral-weak">Elemen dan terminologi harus konsisten di seluruh platform.</Text> },
+    { title: "5. Pencegahan Kesalahan", content: <Text variant="body-default-s" onBackground="neutral-weak">Desain yang baik mencegah kesalahan terjadi sejak awal.</Text> },
+    { title: "6. Mengenali Daripada Mengingat", content: <Text variant="body-default-s" onBackground="neutral-weak">Minimalkan beban ingatan pengguna. Buat opsi terlihat jelas.</Text> },
+    { title: "7. Fleksibilitas dan Efisiensi", content: <Text variant="body-default-s" onBackground="neutral-weak">Sediakan *shortcuts* bagi pengguna ahli tanpa membingungkan pengguna pemula.</Text> },
+    { title: "8. Desain Estetis dan Minimalis", content: <Text variant="body-default-s" onBackground="neutral-weak">Antarmuka tidak boleh berisi informasi yang tidak relevan.</Text> },
+    { title: "9. Bantu Pengguna dari Kesalahan", content: <Text variant="body-default-s" onBackground="neutral-weak">Pesan eror harus jelas (bukan kode eror), menunjukkan masalah, dan menyarankan solusi.</Text> },
+    { title: "10. Bantuan dan Dokumentasi", content: <Text variant="body-default-s" onBackground="neutral-weak">Bantuan harus mudah dicari dan fokus pada tugas pengguna.</Text> }
+  ]}
+/>
+
+### Refleksi Akhir
+
+Materi dari Kelompok 2 ini benar-benar menekankan bahwa UI dan UX adalah dua sisi dari koin yang sama. UI adalah *apa* yang dilihat pengguna, dan UX adalah *bagaimana* mereka merasakannya.
+
+<Feedback
+    icon
+    variant="success"
+    title="Kesimpulan Utama"
+    description="Software yang hebat tidak hanya berfungsi tanpa bug (Functional Testing), tapi juga terlihat indah (UI Testing) dan terasa menyenangkan saat digunakan (UX Testing). Keduanya adalah kunci untuk membangun produk yang benar-benar berkualitas."
+    marginBottom="16"
+/>
