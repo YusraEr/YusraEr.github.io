@@ -1,0 +1,211 @@
+---
+title: "Menulis Test Case & Melaporkan Bug"
+publishedAt: "2025-10-17"
+summary: "Setelah punya Test Plan, saatnya 'turun ke lapangan'. Kita bedah dokumen inti seorang Quality Assurance: Test Scenario, Test Case, dan Bug Report."
+tag: "Quality Assurance"
+---
+
+Di *post* blog kita sebelumnya, kita telah menyusun "peta perang" melalui **Test Plan**. Kita sudah tahu *strategi*, *ruang lingkup*, dan *sumber daya*. Sekarang, saatnya untuk benar-benar turun ke "medan tempur".
+
+Materi dari Kelompok 4 kali ini membawa kita ke tiga dokumen inti yang menjadi "senjata" sehari-hari seorang *Software Quality Assurance* (SQA): **Test Scenario**, **Test Case**, dan **Bug Report**. Ketiganya adalah elemen penting yang saling melengkapi untuk memastikan aplikasi bebas dari kesalahan.
+
+### Perbedaan Kunci: Skenario vs. Kasus Uji
+
+Ini adalah konsep fundamental yang dijelaskan dengan sangat baik oleh Kelompok 4. Seringkali tertukar, keduanya memiliki fokus yang berbeda:
+
+<Grid fillWidth gap="16" columns="2" mobileColumns="1" marginBottom="24" marginTop="16">
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Icon name="search" onBackground="info-medium" size="m" />
+      <Text variant="heading-strong-s">Test Scenario: "Apa yang Harus Diuji?"</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Ini adalah gambaran umum (*high-level*) tentang apa yang akan diuji. Fokusnya adalah pada **fungsionalitas** untuk memastikan aplikasi sesuai kebutuhan.
+    </Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Icon name="check" onBackground="success-medium" size="m" />
+      <Text variant="heading-strong-s">Test Case: "Bagaimana Cara Mengujinya?"</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Ini adalah langkah-langkah detail (*low-level*) tentang cara melakukan pengujian. Isinya sangat rinci, mencakup *input*, *proses*, dan *hasil yang diharapkan*.
+    </Text>
+  </Column>
+</Grid>
+
+### Contoh Praktis: Aplikasi Kalkulator BMI
+
+Mari kita buat ini menjadi nyata dengan contoh aplikasi BMI yang dibawakan oleh pemateri.
+
+**1. Test Scenario**
+Pertama, kita definisikan "Apa" yang ingin kita uji dalam sebuah tabel sederhana:
+
+<Table 
+  marginBottom="16"
+  data={{
+    headers: [
+      { content: "ID Scenario", key: "id", sortable: true },
+      { content: "Modul/Fitur yang diuji", key: "modul", sortable: true },
+      { content: "Deskripsi", key: "deskripsi" }
+    ],
+    rows: [
+      ["TS001", "Slider input berat dan tinggi badan", "Periksa fungsi slider input"],
+      ["TS002", "Perhitungan dan klasifikasi BMI", "Periksa hasil perhitungan dan klasifikasi BMI"],
+      ["TS003", "History BMI", "Periksa fungsi penyimpanan history BMI"]
+    ]
+  }}
+/>
+
+**2. Test Case**
+Kemudian, kita ambil satu skenario (misal TS002) dan memecahnya menjadi *test case* yang detail untuk menjawab "Bagaimana" cara mengujinya.
+
+<Feedback
+    icon
+    variant="info"
+    title="Contoh Test Case (TC004)"
+    description="Ini adalah contoh test case spesifik untuk memverifikasi kategori 'Underweight'."
+    marginBottom="16"
+/>
+
+<Table 
+  marginBottom="24"
+  data={{
+    headers: [
+      { content: "Field", key: "field" },
+      { content: "Keterangan", key: "keterangan" }
+    ],
+    rows: [
+      ["ID Test Case", "TC004"],
+      ["Deskripsi", "Verifikasi Hasil Kategori Underweight"],
+      ["Precondition", "Aplikasi terbuka"],
+      ["Test Steps", "1. Masukkan tinggi 170cm 2. Masukkan berat 45kg"],
+      ["Test Data", "Tinggi = 170, Berat = 45"],
+      ["Expected Result", "Hasil menunjukkan BMI = 15.6 dan menampilkan kategori 'Underweight'"],
+      ["Actual Result", "(diisi oleh tester setelah eksekusi)"],
+      ["Status", "(diisi oleh tester: Pass/Fail)"]
+    ]
+  }}
+/>
+
+### Saat Rencana Tak Sesuai Realita: Bug Report
+
+Apa yang terjadi jika `Actual Result` tidak sama dengan `Expected Result`? Kita membuat **Bug Report**. Ini adalah laporan formal tentang kesalahan pada sistem.
+
+Dua konsep terpenting dalam Bug Report adalah **Severity** dan **Priority**:
+
+<AccordionGroup 
+  marginBottom="24"
+  marginTop="16"
+  items={[
+    {
+      title: "Severity: Seberapa Parah Dampak Bug?",
+      content: 
+      <Column gap="8" padding="8">
+        <Text variant="body-default-s" onBackground="neutral-weak">• **Critical**: Kegagalan total sistem, aplikasi tidak dapat digunakan, data rusak.</Text>
+        <Text variant="body-default-s" onBackground="neutral-weak">• **Major (High)**: Fungsionalitas utama tidak bekerja, tapi sistem tidak *crash* total.</Text>
+        <Text variant="body-default-s" onBackground="neutral-weak">• **Minor (Medium)**: Tidak memengaruhi fungsionalitas utama, tapi menimbulkan ketidaknyamanan.</Text>
+        <Text variant="body-default-s" onBackground="neutral-weak">• **Low**: Bug kosmetik atau minor yang tidak mengakibatkan kerusakan.</Text>
+      </Column>
+    },
+    {
+      title: "Priority: Seberapa Mendesak Bug Ini Harus Diperbaiki?",
+      content: 
+      <Column gap="8" padding="8">
+        <Text variant="body-default-s" onBackground="neutral-weak">• **P1 (Urgent/Critical)**: Bug yang harus diperbaiki secepat mungkin.</Text>
+        <Text variant="body-default-s" onBackground="neutral-weak">• **P2 (High)**: Bug penting yang harus diperbaiki secepatnya, tapi tidak se-mendesak P1.</Text>
+        <Text variant="body-default-s" onBackground="neutral-weak">• **P3 (Medium)**: Bisa diperbaiki di siklus rilis berikutnya.</Text>
+        <Text variant="body-default-s" onBackground="neutral-weak">• **P4 (Low)**: Bug minor atau kosmetik yang bisa diperbaiki kapan saja.</Text>
+      </Column>
+    }
+  ]}
+/>
+
+### Contoh Format Bug Report
+
+Berikut adalah contoh laporan *bug* untuk aplikasi BMI, disajikan dalam format kartu yang rapi.
+
+<Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8" marginBottom="24">
+  <Row fillWidth vertical="center" horizontal="space-between">
+    <Text variant="heading-strong-s">Bug Title: Perhitungan BMI salah saat input berat 60kg dan tinggi 170cm</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">Bug ID: BMI-001</Text>
+  </Row>
+  <Row fillWidth border="neutral-alpha-medium" background="surface" padding="8" radius="s" gap="16" mobileDirection="column">
+    <Column fillWidth gap="4">
+      <Text variant="body-strong-s" onBackground="neutral-medium">Severity</Text>
+      <Text variant="body-strong-m" onBackground="danger-medium">Major (High)</Text>
+    </Column>
+    <Column fillWidth gap="4">
+      <Text variant="body-strong-s" onBackground="neutral-medium">Priority</Text>
+      <Text variant="body-strong-m" onBackground="danger-medium">P2 - High</Text>
+    </Column>
+    <Column fillWidth gap="4">
+      <Text variant="body-strong-s" onBackground="neutral-medium">Assignee</Text>
+      <Text variant="body-strong-m">Developer</Text>
+    </Column>
+    <Column fillWidth gap="4">
+      <Text variant="body-strong-s" onBackground="neutral-medium">Reporter</Text>
+      <Text variant="body-strong-m">SQA</Text>
+    </Column>
+  </Row>
+  
+  <Text variant="heading-strong-xs" marginTop="8">Steps to Reproduce:</Text>
+  <Text variant="body-default-s" onBackground="neutral-weak">
+    1. Buka aplikasi BMI
+    2. Masukkan Berat = 60
+    3. Masukkan Tinggi = 170
+    4. Klik tombol "Hitung"
+  </Text>
+
+  <Row fillWidth mobileDirection="column" gap="16" marginTop="8">
+    <Column fillWidth gap="4">
+      <Text variant="heading-strong-xs">Actual Result (Hasil Aktual):</Text>
+      <Text variant="body-default-s" onBackground="neutral-weak">Hasil BMI = 12.5</Text>
+    </Column>
+    <Column fillWidth gap="4">
+      <Text variant="heading-strong-xs">Expected Result (Hasil Harapan):</Text>
+      <Text variant="body-default-s" onBackground="neutral-weak">Hasil BMI seharusnya = 20.8</Text>
+    </Column>
+  </Row>
+</Column>
+
+### Mencegah Lebih Baik Daripada Mengobati
+
+Tentu saja, cara terbaik adalah menghindari *bug* sejak awal. Materi ini ditutup dengan beberapa praktik terbaik:
+
+<Grid fillWidth gap="16" columns="3" mobileColumns="1" marginBottom="24">
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Icon name="check" onBackground="success-medium" size="m" />
+    <Text variant="body-strong-s">Pahami Persyaratan</Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Icon name="check" onBackground="success-medium" size="m" />
+    <Text variant="body-strong-s">Lakukan Unit Testing</Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Icon name="check" onBackground="success-medium" size="m" />
+    <Text variant="body-strong-s">Terapkan Code Review</Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Icon name="check" onBackground="success-medium" size="m" />
+    <Text variant="body-strong-s">Buat Test Plan Komprehensif</Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Icon name="check" onBackground="success-medium" size="m" />
+    <Text variant="body-strong-s">Gunakan Pengujian Otomatis</Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Icon name="check" onBackground="success-medium" size="m" />
+    <Text variant="body-strong-s">Tingkatkan Kolaborasi Tim</Text>
+  </Column>
+</Grid>
+
+### Refleksi Akhir
+
+<Feedback
+    icon
+    variant="success"
+    title="Dokumen adalah Alat Komunikasi"
+    description="Test Case dan Bug Report adalah bahasa universal antara tester dan developer. Test Case yang baik mencegah ambiguitas, dan Bug Report yang baik mempercepat perbaikan. Keduanya adalah pilar dari siklus pengembangan yang sehat."
+    marginBottom="16"
+/>
