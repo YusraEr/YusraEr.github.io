@@ -1,0 +1,169 @@
+---
+title: "Mengotomatisasi Browser dengan Selenium"
+publishedAt: "2025-10-30"
+summary: "Kita sampai di puncak piramida: End-to-End testing. Mari kita pelajari Selenium, 'robot' yang mengklik, mengetik, dan memvalidasi aplikasi web kita."
+tag: "Automasi"
+---
+
+import { Feedback, Grid, Column, Icon, AccordionGroup, Text, Row, Table, CodeBlock } from './components/YourComponents' // Asumsi impor komponen
+
+Perjalanan kita di dunia *testing* telah membawa kita dari fondasi kode (*Unit Testing*) dan "dapur" sistem (*API Testing*). Sekarang, materi dari Kelompok 7 membawa kita ke puncak piramida: **Automation Testing** untuk *End-to-End (E2E)*. Dan di dunia automasi *browser*, ada satu nama yang merajai: **Selenium**.
+
+Ini pada dasarnya adalah cara kita memprogram "robot" untuk melakukan semua pekerjaan manual yang membosankan: membuka *browser*, mengisi formulir, mengklik tombol, dan memvalidasi hasilnya.
+
+### Apa Itu Selenium & Selenium WebDriver?
+
+<Row fillWidth mobileDirection="column" gap="16" marginBottom="24" marginTop="16">
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Text variant="heading-strong-s">Selenium</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Ini adalah **framework open-source** untuk mengotomatisasi *browser*. Selenium memungkinkan kita menulis skrip (dalam bahasa seperti Python, Java, C#) yang bisa mengontrol *browser* (Chrome, Firefox, Safari, Edge) untuk menguji aplikasi web secara otomatis.
+    </Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Text variant="heading-strong-s">Selenium WebDriver</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Ini adalah **komponen inti** dari Selenium. Anggap saja WebDriver sebagai "jembatan" atau "penerjemah". Skrip kita (misal: "klik tombol login") memberi perintah ke WebDriver, lalu WebDriver-lah yang menerjemahkan perintah itu menjadi instruksi yang dipahami oleh masing-masing *browser*.
+    </Text>
+  </Column>
+</Row>
+
+### Alur Kerja Sederhana
+
+Materi ini menjelaskan alur kerjanya dengan sangat baik. Prosesnya logis:
+
+<Row 
+  fillWidth 
+  border="neutral-alpha-medium" 
+  padding="16" 
+  radius="m" 
+  gap="16" 
+  vertical="center" 
+  horizontal="center" 
+  mobileDirection="column"
+  marginBottom="24"
+>
+  <Column horizontal="center" gap="8">
+    <Icon name="code" size="m" />
+    <Text variant="body-strong-s">1. Test Scripts</Text>
+    <Text variant="body-default-xs" onBackground="neutral-weak">(Python, Java, C#, dll)</Text>
+  </Column>
+  
+  <Icon name="chevronRight" size="m" onBackground="neutral-medium" />
+
+  <Column horizontal="center" gap="8">
+    <Icon name="rocket" size="m" onBackground="info-medium" />
+    <Text variant="body-strong-s">2. Selenium WebDriver</Text>
+    <Text variant="body-default-xs" onBackground="neutral-weak">(Sang Penerjemah)</Text>
+  </Column>
+
+  <Icon name="chevronRight" size="m" onBackground="neutral-medium" />
+
+  <Column horizontal="center" gap="8">
+    <Icon name="check" size="m" onBackground="success-medium" />
+    <Text variant="body-strong-s">3. Browser</Text>
+    <Text variant="body-default-xs" onBackground="neutral-weak">(Chrome, Firefox, Edge, dll)</Text>
+  </Column>
+</Row>
+
+### Mengapa Harus Selenium?
+
+Ada banyak *tools* automasi, tapi Selenium tetap menjadi standar industri. Mengapa?
+
+<Grid fillWidth gap="16" columns="2" mobileColumns="1" marginBottom="24">
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Icon name="rocket" size="m" onBackground="success-medium" />
+    <Text variant="heading-strong-s">Open-Source & Gratis</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">Tidak ada biaya lisensi. Ini adalah keuntungan besar untuk tim mana pun.</Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Icon name="code" size="m" onBackground="info-medium" />
+    <Text variant="heading-strong-s">Multi-Bahasa</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">Anda bisa menulis tes dalam bahasa yang sudah Anda kuasai: Python, Java, C#, JavaScript, dll.</Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Icon name="check" size="m" onBackground="info-medium" />
+    <Text variant="heading-strong-s">Multi-Browser & Platform</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">Tulis satu skrip, jalankan di Windows, macOS, Linux, dan uji di Chrome, Firefox, Safari, dan Edge.</Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Icon name="search" size="m" onBackground="success-medium" />
+    <Text variant="heading-strong-s">Komunitas Besar</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">Komunitas yang besar berarti banyak dokumentasi, tutorial, dan dukungan jika Anda mengalami masalah.</Text>
+  </Column>
+</Grid>
+
+### Contoh Praktis: Menguji Website SauceDemo
+
+Materi Kelompok 7 memberikan contoh *real-world* menggunakan *website* demo `saucedemo.com`.
+
+**1. Skenario & Kasus Uji (Test Scenarios & Cases)**
+Seperti yang kita pelajari dari Kelompok 4, kita mulai dengan Skenario ('Apa') dan Kasus Uji ('Bagaimana').
+
+<Table 
+  marginBottom="24"
+  data={{
+    headers: [
+      { content: "ID", key: "id" },
+      { content: "Deskripsi", key: "desc" },
+      { content: "Steps (Langkah-langkah)", key: "steps" },
+      { content: "Expected Result", key: "expected" }
+    ],
+    rows: [
+      ["TC-001", "Login sukses", "Input 'standard_user' & 'secret_sauce', Klik Login", "Masuk ke halaman inventory"],
+      ["TC-002", "Login gagal", "Input 'user_salah' & 'secret_sauce', Klik Login", "Muncul pesan error kredensial"],
+      ["TC-003", "Tambah produk ke cart", "Login sukses, Klik 'Add to cart' pada 1 produk", "Ikon keranjang (cart) bertambah menjadi 1"]
+    ]
+  }}
+/>
+
+**2. Kode Automasi (Contoh TC-001 dalam Python)**
+Sekarang, inilah "keajaiban" Selenium. Kita menerjemahkan `TC-001` di atas menjadi kode yang bisa dieksekusi:
+
+<CodeBlock
+    marginBottom="24"
+    codes={[
+      {
+        code:
+`from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+
+# 1. Arrange: Siapkan driver dan buka browser
+driver = webdriver.Chrome()
+driver.get("https://www.saucedemo.com")
+
+# 2. Act: Lakukan langkah-langkah login
+driver.find_element(By.ID, "user-name").send_keys("standard_user")
+driver.find_element(By.ID, "password").send_keys("secret_sauce")
+driver.find_element(By.ID, "login-button").click()
+
+# Jeda singkat untuk melihat halaman dimuat
+time.sleep(2)
+
+# 3. Assert: Validasi hasilnya
+expected_url = "https://www.saucedemo.com/inventory.html"
+actual_url = driver.current_url
+
+assert actual_url == expected_url, f"Login gagal! URL aktual: {actual_url}"
+
+print("Test TC-001: Login Sukses... LULUS!")
+
+# Cleanup
+driver.quit()
+`,
+        language: "python",
+        label: "Contoh Skrip: test_login_sukses.py"
+      }
+    ]}
+/>
+
+### Refleksi Akhir
+
+<Feedback
+    icon
+    variant="success"
+    title="Kesimpulan Utama"
+    description="Selenium adalah 'game changer'. Ia mengambil alur pengujian UI yang paling repetitif, membosankan, dan rentan-kesalahan (manual testing) dan mengubahnya menjadi skrip yang andal, cepat, dan otomatis. Ini memungkinkan tim SQA fokus pada pengujian yang lebih kompleks (seperti exploratory testing) sementara 'robot' Selenium menangani regresi."
+    marginBottom="16"
+/>

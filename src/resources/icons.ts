@@ -25,7 +25,7 @@ import {
 
 import { FaDiscord, FaGithub, FaLinkedin, FaX, FaThreads, FaInstagram, FaWhatsapp } from "react-icons/fa6";
 import { GiRobotGolem } from "react-icons/gi";
-import { HiOutlineDatabase, HiShieldCheck } from "react-icons/hi";
+import { HiCode, HiOutlineDatabase, HiShieldCheck } from "react-icons/hi";
 
 export const iconLibrary: Record<string, IconType> = {
   arrowUpRight: HiArrowUpRight,
@@ -54,7 +54,8 @@ export const iconLibrary: Record<string, IconType> = {
   robot: GiRobotGolem,
   paper: HiPaperClip,
   database: HiOutlineDatabase,
-  shield: HiShieldCheck
+  shield: HiShieldCheck,
+  code: HiCode
 };
 
 export type IconLibrary = typeof iconLibrary;
