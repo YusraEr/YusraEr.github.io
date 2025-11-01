@@ -1,0 +1,149 @@
+---
+title: "Strategi Testing"
+publishedAt: "2025-10-10"
+summary: "Sebuah perenungan naratif tentang mengapa software testing bukan hanya sebuah fase, tapi sebuah filosofi inti dalam pengembangan perangkat lunak."
+tag: "Software Testing"
+---
+
+Sebagai mahasiswa teknologi, kita sering terobsesi dengan *penciptaan*—membangun aplikasi, menulis kode, dan merancang sistem. Tapi, ada satu disiplin ilmu lain yang sama pentingnya, yang berfokus pada sisi lain: **penjaminan kualitas**. 
+
+Saya baru saja mendalami materi komprehensif dari rekan-rekan saya mengenai "Strategi Testing" dalam kelas *Software Testing and Quality Assurance*, dan itu benar-benar membuka mata saya tentang betapa vitalnya proses ini.
+
+<Feedback
+    icon
+    variant="info"
+    title="Catatan Refleksi"
+    description="Ini bukan sekadar 'mencari bug'. Ini adalah perenungan tentang bagaimana kita membangun produk yang andal dan dipercaya oleh pengguna."
+    marginBottom="24"
+/>
+
+### Mengapa Kita Menguji?
+
+Awalnya, mudah untuk berpikir bahwa testing hanyalah langkah teknis untuk validasi. Namun, materi tersebut menyoroti tujuan yang jauh lebih dalam. Pada intinya, testing adalah tentang **Verifikasi dan Validasi**; memastikan kita membangun produk yang benar, dan membangunnya dengan benar.
+
+Tapi lebih dari itu, testing adalah tentang manajemen risiko dan membangun kepercayaan. Berikut adalah pilar-pilar utamanya:
+
+<Grid fillWidth gap="16" columns="3" mobileColumns="1" marginBottom="24" marginTop="16">
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Icon name="check" onBackground="success-medium" size="m" />
+      <Text variant="heading-strong-s">Efisiensi Biaya</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Menemukan *bug* di awal jauh lebih murah daripada memperbaikinya setelah rilis.
+    </Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Icon name="rocket" onBackground="info-medium" size="m" />
+      <Text variant="heading-strong-s">Pengalaman Pengguna (UX)</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Produk yang andal, aman, dan bebas *bug* adalah produk yang akan disukai dan dipercaya pengguna.
+    </Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Icon name="warning" onBackground="warning-medium" size="m" />
+      <Text variant="heading-strong-s">Keamanan & Risiko</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Menjamin keamanan data pengguna dan mengurangi risiko kegagalan sistem di saat-saat kritis.
+    </Text>
+  </Column>
+</Grid>
+
+### Perjalanan Testing: Sebuah Siklus, Bukan Sekadar Langkah
+
+Kesalahan umum yang sering saya temui adalah anggapan bahwa testing adalah fase kelima dalam SDLC, sesuatu yang Anda lakukan *setelah* implementasi selesai. Kenyataannya, testing memiliki siklus hidupnya sendiri, yang dikenal sebagai **Software Testing Life Cycle (STLC)**.
+
+Ini adalah pendekatan sistematis yang berjalan paralel dengan pengembangan, dirancang untuk memastikan kualitas di setiap langkah. Mari kita bedah fase-fasenya:
+
+<AccordionGroup 
+  marginBottom="24"
+  marginTop="16"
+  items={[
+    {
+      title: "1. Test Planning (Perencanaan)",
+      content: <Text variant="body-default-s" onBackground="neutral-weak">Ini adalah fase cetak biru. Di sini kita menyusun strategi, mengidentifikasi lingkungan pengujian, memperkirakan waktu dan biaya, serta menugaskan peran dan tanggung jawab.</Text>
+    },
+    {
+      title: "2. Test Design (Perancangan)",
+      content: <Text variant="body-default-s" onBackground="neutral-weak">Di sinilah kita menjadi kreatif. Tim mengidentifikasi *test case*, menulisnya secara detail, dan menyiapkan data serta skenario pengujian. Kita pada dasarnya menulis naskah untuk setiap kemungkinan.</Text>
+    },
+    {
+      title: "3. Test Execution (Eksekusi)",
+      content: <Text variant="body-default-s" onBackground="neutral-weak">Saatnya "pertunjukan". Tester menjalankan *test case* yang telah dirancang. Ini mencakup berbagai level, mulai dari *Component Testing*, *Integration Testing*, *System Testing*, hingga *Acceptance Testing*.</Text>
+    },
+    {
+      title: "4. Pelaporan & Analisis (Pelaporan)",
+      content: <Text variant="body-default-s" onBackground="neutral-weak">Siklus ditutup dengan analisis hasil. Ini bukan hanya daftar 'lulus' atau 'gagal', tapi laporan komprehensif yang mengidentifikasi *bug*, mengevaluasi kualitas, dan memberikan rekomendasi perbaikan.</Text>
+    }
+  ]}
+/>
+
+### Berbagai "Kacamata" dalam Dunia Testing
+
+Bagian yang paling mencerahkan bagi saya adalah bagaimana materi ini membedah klasifikasi testing. "Testing" bukanlah satu hal saja; itu adalah sekumpulan "kacamata" yang bisa kita pakai untuk melihat perangkat lunak dari berbagai sudut pandang.
+
+#### Kacamata Struktur: Black-Box vs. White-Box
+Ini adalah cara pandang paling fundamental, membedakan apakah kita bisa melihat "isi" kode atau tidak.
+
+<Row fillWidth mobileDirection="column" gap="16" marginBottom="24" marginTop="16">
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Icon name="close" size="m" />
+      <Text variant="heading-strong-s">Black-Box Testing</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Kita tidak peduli dengan apa yang ada di dalam kotak (kode). Kita hanya peduli pada *input* dan *output*. Jika saya menekan tombol "Login", apakah saya berhasil masuk? Ini adalah perspektif pengguna akhir.
+    </Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Icon name="search" size="m" />
+      <Text variant="heading-strong-s">White-Box Testing</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Kita adalah sang teknisi yang membuka kotak itu. Kita melihat langsung ke kode, alur logika, dan struktur internalnya untuk menemukan *bug* yang tersembunyi di dalam.
+    </Text>
+  </Column>
+</Row>
+
+#### Kacamata Fokus: Fungsional vs. Non-Fungsional
+Ini membedakan antara *apa* yang dilakukan sistem dan *bagaimana* sistem melakukannya.
+
+<Row fillWidth mobileDirection="column" gap="16" marginBottom="24">
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Icon name="check" size="m" />
+      <Text variant="heading-strong-s">Functional Testing</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Menguji **apa** yang dilakukan sistem. Apakah fungsi login *bekerja*? Apakah proses *checkout* e-commerce berhasil? Ini semua tentang kesesuaian dengan persyaratan fungsional.
+    </Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Icon name="info" onBackground="info-medium" size="m" />
+      <Text variant="heading-strong-s">Non-Functional Testing</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Menguji **bagaimana** sistem bekerja. Oke, login-nya bekerja, tapi apakah aman? (*Security Testing*). Apakah cepat saat 1000 orang login bersamaan? (*Performance Testing*). Apakah mudah digunakan? (*Usability Testing*).
+    </Text>
+  </Column>
+</Row>
+
+### Refleksi Akhir
+
+Mempelajari materi ini menegaskan kembali satu hal: testing bukanlah penghalang atau pekerjaan tambahan. Testing adalah bagian integral dari *software development life cycle* (SDLC).
+
+Ini adalah disiplin yang memastikan bahwa apa yang kita bangun tidak hanya berfungsi, tetapi juga andal, aman, dan menyenangkan untuk digunakan.
+
+<Feedback
+    icon
+    variant="success"
+    title="Kesimpulan Utama"
+    description="Sebagai calon profesional, kita tidak hanya membangun software; kita membangun solusi yang berkualitas. Testing adalah jembatan antara kode yang kita tulis dan nilai yang diterima oleh pengguna akhir."
+    marginBottom="16"
+/>
