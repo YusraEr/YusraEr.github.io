@@ -1,0 +1,113 @@
+---
+title: "Pentingnya Sebuah Testing Plan"
+publishedAt: "2025-10-14"
+summary: "Setelah tahu 'apa' yang diuji (fungsional, UI/UX), kini saatnya menyusun 'bagaimana'-nya. Sebuah perenungan tentang Testing Plan sebagai dokumen strategis."
+tag: "Software Testing"
+---
+
+Di dua *post* sebelumnya, kita telah menjelajahi *apa* yang perlu diuji: dari strategi fungsional hingga seluk-beluk pengalaman pengguna (UI/UX). Sekarang, kita masuk ke tahap yang lebih manajerial namun tak kalah krusial. Materi dari Kelompok 3 kali ini membahas tentang **Testing Plan**.
+
+Jika *testing* adalah sebuah pertempuran untuk menjamin kualitas, maka **Testing Plan** adalah peta perangnya.
+
+<Feedback
+    icon
+    variant="info"
+    title="Apa Itu Testing Plan?"
+    description="Ini adalah dokumen panduan formal yang menjelaskan bagaimana proses pengujian perangkat lunak akan dilakukan. Ini adalah cetak biru yang menjawab 'siapa', 'apa', 'kapan', 'di mana', dan 'bagaimana' dari seluruh upaya pengujian."
+    marginBottom="24"
+/>
+
+### Mengapa Repot-Repot Membuat Rencana?
+
+Mungkin terlihat seperti birokrasi tambahan, tetapi materi ini menekankan bahwa tujuan dari *test plan* sangat vital untuk kesuksesan proyek.
+
+<Grid fillWidth gap="16" columns="3" mobileColumns="1" marginBottom="24" marginTop="16">
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Icon name="search" onBackground="info-medium" size="m" />
+      <Text variant="heading-strong-s">Kejelasan (Clarity)</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Menyediakan gambaran yang jelas tentang apa yang akan diuji dan bagaimana cara mengujinya.
+    </Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Icon name="check" onBackground="success-medium" size="m" />
+      <Text variant="heading-strong-s">Kualitas (Quality)</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Memastikan proses pengujian dapat menemukan sebanyak mungkin kesalahan dan menjamin kualitas produk.
+    </Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Icon name="rocket" onBackground="warning-medium" size="m" />
+      <Text variant="heading-strong-s">Efisiensi (Efficiency)</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Mengoptimalkan penggunaan waktu, biaya, dan tenaga kerja agar pengujian terarah dan konsisten.
+    </Text>
+  </Column>
+</Grid>
+
+### Anatomi Sebuah Testing Plan (Standar IEEE 829)
+
+Kelompok 3 menyoroti bahwa *test plan* yang baik memiliki komponen standar, seperti yang didefinisikan oleh **IEEE 829-1988**. Ada banyak sekali komponennya (total 19!), tapi mari kita kelompokkan yang paling esensial agar mudah dipahami.
+
+<AccordionGroup 
+  marginBottom="24"
+  marginTop="16"
+  items={[
+    {
+      title: "1. Fondasi & Ruang Lingkup (The 'What')",
+      content: 
+      <Column gap="8">
+        <Text variant="body-default-s" onBackground="neutral-weak">- Introduction: Gambaran umum (executive summary) tentang tujuan dan fokus pengujian.</Text>
+        <Text variant="body-default-s" onBackground="neutral-weak">- Test Items: Komponen atau modul teknis apa saja yang akan diuji.</Text>
+        <Text variant="body-default-s" onBackground="neutral-weak">- Features to be Tested: Fitur dari sudut pandang pengguna yang masuk dalam cakupan pengujian.</Text>
+        <Text variant="body-default-s" onBackground="neutral-weak">- Features not to be Tested: Fitur yang sengaja dikecualikan (misal, karena sudah stabil) beserta alasannya. Ini penting untuk manajemen risiko.</Text>
+      </Column>
+    },
+    {
+      title: "2. Strategi & Kriteria (The 'How')",
+      content: 
+      <Column gap="8">
+        <Text variant="body-default-s" onBackground="neutral-weak">- Approach (Pendekatan): Strategi umum. Apakah kita akan pakai *black-box* atau *white-box*? Manual atau otomatis? *System testing* atau *integration testing*?</Text>
+        <Text variant="body-default-s" onBackground="neutral-weak">- Item Pass/Fail Criteria: Definisi yang jelas. Kapan sebuah fitur dinyatakan 'Lulus' (misal: semua *test case* utama berjalan) dan kapan dinyatakan 'Gagal' (misal: ditemukan *bug* kritis).</Text>
+        <Text variant="body-default-s" onBackground="neutral-weak">- Suspension & Resumption Criteria: Aturan main. Kapan pengujian harus dihentikan sementara (misal: *bug* kritis memblokir fitur lain) dan kapan bisa dilanjutkan kembali.</Text>
+      </Column>
+    },
+    {
+      title: "3. Sumber Daya & Jadwal (The 'Who' & 'When')",
+      content: 
+      <Column gap="8">
+        <Text variant="body-default-s" onBackground="neutral-weak">- Responsibilities: Siapa melakukan apa? Siapa yang menulis *test case*, siapa yang eksekusi, dan siapa yang berwenang mengambil keputusan.</Text>
+        <Text variant="body-default-s" onBackground="neutral-weak">- Staffing and Training Needs: Kebutuhan personel (Test Manager, Tester) dan pelatihan apa yang mungkin diperlukan tim.</Text>
+        <Text variant="body-default-s" onBackground="neutral-weak">- Environmental Needs: Spesifikasi 'medan perang'. *Hardware*, *software*/versi, data uji, dan alat apa yang dibutuhkan.</Text>
+        <Text variant="body-default-s" onBackground="neutral-weak">- Schedule: Garis waktu dan *milestone* penting, dari kapan mulai, periode eksekusi, hingga *sign-off* rilis.</Text>
+      </Column>
+    },
+    {
+      title: "4. Hasil & Administrasi (The 'Proof' & 'Formalities')",
+      content: 
+      <Column gap="8">
+        <Text variant="body-default-s" onBackground="neutral-weak">- Test Deliverables: Bukti nyata dari pengujian. Ini bisa berupa dokumen *test case*, laporan *bug*, dan *test summary report*.</Text>
+        <Text variant="body-default-s" onBackground="neutral-weak">- Planning Risks and Contingencies: Identifikasi risiko dalam proses pengujian (misal: fitur kompleks) dan rencana cadangannya.</Text>
+        <Text variant="body-default-s" onBackground="neutral-weak">- Approvals: Siapa saja (Manajer Proyek, Manajer Pengujian) yang harus menandatangani dokumen ini sebagai tanda persetujuan.</Text>
+      </Column>
+    }
+  ]}
+/>
+
+### Refleksi Akhir
+
+Materi ini menyadarkan saya bahwa *testing* yang sukses bukanlah kebetulan. Itu adalah hasil dari perencanaan yang matang. Tanpa *Test Plan*, tim akan bergerak tanpa arah, membuang waktu untuk menguji hal yang tidak perlu, atau lebih buruk lagi, melewatkan fitur-fitur kritis.
+
+<Feedback
+    icon
+    variant="success"
+    title="Kesimpulan Utama"
+    description="Testing Plan adalah dokumen hidup yang mengubah kekacauan proses 'pencarian bug' menjadi sebuah strategi penjaminan kualitas yang terstruktur, terukur, dan akuntabel. Ini adalah fondasi dari semua aktivitas testing."
+    marginBottom="16"
+/>
