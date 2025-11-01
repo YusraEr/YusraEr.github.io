@@ -1,0 +1,141 @@
+---
+title: "Intro to API Testing"
+publishedAt: "2025-10-22"
+summary: "Kita beralih dari apa yang dilihat pengguna (UI) ke 'dapur' di baliknya. Apa itu API testing dan mengapa ini adalah fondasi dari integrasi sistem?"
+tag: "API Testing"
+---
+
+Perjalanan kita dalam dunia *software testing* semakin mendalam. Kita sudah membahas *Testing Plan* (strategi), *UI/UX Testing* (apa yang dilihat pengguna), dan *Unit Testing* (fondasi kode). Sekarang, materi dari Kelompok 6 membawa kita ke **API Testing**.
+
+Jika aplikasi adalah sebuah restoran, UI adalah ruang makan dan pelayannya, maka API (*Application Programming Interface*) adalah dapurnya. Di sinilah semua permintaan diproses, data diambil, dan pesanan disiapkan sebelum diantar kembali ke pelanggan.
+
+<Feedback
+    icon
+    variant="info"
+    title="Apa Itu API Testing?"
+    description="Ini adalah proses pengujian yang dilakukan langsung pada 'jembatan' (API) untuk memastikan ia berfungsi sesuai spesifikasi, dapat menangani berbagai skenario, dan menghasilkan output yang benar saat menerima input tertentu. Kita menguji 'dapur'-nya tanpa harus melalui 'pelayan' (UI)."
+    marginBottom="24"
+/>
+
+### Mengapa Menguji "Dapur" Itu Penting?
+
+Mengapa tidak cukup hanya menguji UI-nya saja? Materi ini menyoroti beberapa keunggulan vital:
+
+<Grid fillWidth gap="16" columns="3" mobileColumns="1" marginBottom="24" marginTop="16">
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Icon name="check" onBackground="success-medium" size="m" />
+      <Text variant="heading-strong-s">Mendeteksi Bug Lebih Awal</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Mendeteksi masalah di level API (logika bisnis, data) jauh lebih cepat dan lebih awal sebelum masalah itu muncul di UI.
+    </Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Icon name="warning" onBackground="danger-medium" size="m" />
+      <Text variant="heading-strong-s">Menjamin Keamanan</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      API adalah pintu gerbang ke data. Pengujian API sangat krusial untuk memastikan tidak ada celah keamanan atau akses tidak sah.
+    </Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Icon name="rocket" onBackground="info-medium" size="m" />
+      <Text variant="heading-strong-s">Performa & Integrasi</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      API adalah fondasi integrasi antar sistem. Pengujian ini memastikan API stabil, cepat, dan mampu menangani beban kerja.
+    </Text>
+  </Column>
+</Grid>
+
+### Anatomi Request & Response
+
+Dalam API testing, kita pada dasarnya mengirim "pesanan" (Request) ke "dapur" (Server) dan memeriksa "hidangan" (Response) yang kembali.
+
+<Row fillWidth mobileDirection="column" gap="16" marginBottom="24" marginTop="16">
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Text variant="heading-strong-s">Anatomi Request (Klien ke Server)</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak" marginBottom="8">
+      Ini adalah permintaan yang kita kirim. Komponen utamanya adalah:
+    </Text>
+    <CodeBlock
+        radius="m"
+        codes={[
+          {
+            code:
+`GET /api/v1/users/123
+Host: api.example.com
+Authorization: Bearer <token>`,
+            language: "http",
+            label: "Contoh HTTP Request"
+          }
+        ]}
+    />
+    <Text variant="body-default-s" onBackground="neutral-weak" marginTop="8">
+      • **Method (HTTP Verb)**: Aksi yang ingin dilakukan (`GET` untuk mengambil data, `POST` untuk mengirim data baru).
+    </Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      • **URL (Endpoint)**: Alamat dari sumber daya yang ingin diakses (`/api/v1/users/123`).
+    </Text>
+  </Column>
+
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Text variant="heading-strong-s">Anatomi Response (Server ke Klien)</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak" marginBottom="8">
+      Ini adalah balasan dari server setelah memproses *request*.
+    </Text>
+    <CodeBlock
+        radius="m"
+        codes={[
+          {
+            code:
+`Status: 200 OK
+Content-Type: application/json
+
+{
+  "id": 123,
+  "name": "Mahasiswa Keren"
+}`,
+            language: "http",
+            label: "Contoh HTTP Response"
+          }
+        ]}
+    />
+    <Text variant="body-default-s" onBackground="neutral-weak" marginTop="8">
+      • **Status Code**: Kode hasil eksekusi. Ini sangat penting! (`200 OK` berarti sukses, `404 Not Found` berarti data tidak ada, `401 Unauthorized` berarti tidak punya izin).
+    </Text>
+  </Column>
+</Row>
+
+
+### "Senjata" untuk API Testing
+
+Kita tidak melakukan ini secara manual. Materi ini menyoroti dua alat utama:
+
+<Row fillWidth mobileDirection="column" gap="16" marginBottom="24">
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Text variant="heading-strong-s">Postman</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Ini adalah pilihan paling populer saat ini. Sangat *user-friendly*, bagus untuk testing REST API, mendukung manajemen *collections* (kumpulan *request*), *environment variables* (untuk membedakan *testing* vs *production*), dan *testing* otomatis.
+    </Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Text variant="heading-strong-s">SoapUI</Text>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Ini adalah alat yang lebih "berat" dan sangat kuat, terutama untuk API berbasis SOAP (yang menggunakan XML). Ini sangat cocok untuk skenario *enterprise* yang kompleks dan mendukung pengujian tingkat lanjut seperti *security* dan *load testing*.
+    </Text>
+  </Column>
+</Row>
+
+### Refleksi Akhir
+
+<Feedback
+    icon
+    variant="success"
+    title="Kesimpulan Utama"
+    description="API Testing adalah lapisan krusial yang menjembatani logika bisnis dan antarmuka pengguna. Jika API (dapur) gagal, sebagus apa pun UI (ruang makan) dirancang, pengguna tetap akan mendapatkan 'hidangan' yang salah atau bahkan tidak mendapatkannya sama sekali. Ini adalah fondasi dari integrasi sistem yang andal."
+    marginBottom="16"
+/>
