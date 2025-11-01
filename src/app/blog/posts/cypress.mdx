@@ -1,0 +1,161 @@
+---
+title: "Welcome to Cypress!"
+publishedAt: "2025-10-31"
+summary: "Sebagai penutup seri ini, kita melihat framework E2E modern, Cypress. Apa yang membuatnya berbeda dari Selenium dan mengapa developer menyukainya?"
+tag: "Automasi"
+---
+
+import { Feedback, Grid, Column, Icon, AccordionGroup, Text, Row, Table, CodeBlock } from './components/YourComponents' // Asumsi impor komponen
+
+Di *post* blog sebelumnya, kita telah mengupas tuntas **Selenium**, "robot" penguji yang menjadi standar industri untuk automasi *browser*. Itu adalah *workhorse* yang kuat. Namun, seiring berkembangnya aplikasi web menjadi lebih kompleks dan modern (dibangun dengan React, Vue, Angular), muncul *framework* baru yang dirancang khusus untuk mengatasi tantangannya.
+
+Materi penutup kita, dari Kelompok 8, adalah tentang **Cypress**. Ini adalah *framework end-to-end (E2E) testing* yang sedang naik daun dan sangat dicintai oleh *developer*.
+
+<Feedback
+    icon
+    variant="info"
+    title="Apa Itu Cypress?"
+    description="Cypress adalah framework end-to-end testing generasi baru, yang dibuat khusus untuk aplikasi web modern. Sama seperti Selenium, ia berada di puncak piramida testing, tetapi dengan arsitektur yang sama sekali berbeda yang memberinya beberapa keunggulan unik."
+    marginBottom="24"
+/>
+
+### Mengapa Cypress Berbeda? (Dan Mengapa Developer Suka)
+
+Jika Selenium adalah "penerjemah" yang mengirim perintah ke *browser* (via WebDriver), Cypress hidup *di dalam* *browser* itu sendiri. Arsitektur modern ini memberinya "kekuatan super" yang tidak dimiliki Selenium.
+
+Materi Kelompok 8 menyoroti 4 keunggulan utamanya:
+
+<Grid fillWidth gap="16" columns="2" mobileColumns="1" marginBottom="24" marginTop="16">
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Icon name="search" onBackground="info-medium" size="m" />
+      <Text variant="heading-strong-s">1. Test Runner Interaktif</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Ini adalah *game changer*. Cypress membuka *browser* khusus di mana Anda bisa melihat tes Anda berjalan *secara real-time*, langkah demi langkah.
+    </Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Icon name="rocket" onBackground="info-medium" size="m" />
+      <Text variant="heading-strong-s">2. Time Travel (Debugging)</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Di Test Runner, Anda bisa mengarahkan kursor ke setiap perintah tes dan melihat "snapshot" aplikasi Anda pada saat itu. Gagal di langkah ke-5? Cukup klik dan lihat apa yang salah.
+    </Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Icon name="check" onBackground="success-medium" size="m" />
+      <Text variant="heading-strong-s">3. Automatic Waits</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Ingat `time.sleep(2)` di Selenium? Lupakan itu. Cypress secara otomatis menunggu elemen muncul di halaman sebelum berinteraksi. Ini membuat tes jauh lebih stabil dan tidak "flaky".
+    </Text>
+  </Column>
+  <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m" gap="8">
+    <Row gap="8" vertical="center">
+      <Icon name="code" onBackground="success-medium" size="m" />
+      <Text variant="heading-strong-s">4. Arsitektur Modern</Text>
+    </Row>
+    <Text variant="body-default-s" onBackground="neutral-weak">
+      Instalasi mudah (`npm install cypress`), dokumentasi hebat, dan perintah yang intuitif (seperti JavaScript modern) membuatnya lebih cepat untuk ditulis dan dieksekusi.
+    </Text>
+  </Column>
+</Grid>
+
+### Perintah Dasar Cypress
+
+Alih-alih `driver.find_element()`, Cypress menggunakan sintaks yang lebih mirip JQuery atau JavaScript modern, yang dimulai dengan `cy`.
+
+<Table 
+  marginBottom="24"
+  data={{
+    headers: [
+      { content: "Perintah", key: "cmd" },
+      { content: "Deskripsi", key: "desc" }
+    ],
+    rows: [
+      ["cy.visit('URL')", "Membuka halaman web (seperti `driver.get()`)"],
+      ["cy.get('selector')", "Mengambil satu atau lebih elemen (seperti `find_element_by...`)"],
+      ["cy.type('text')", "Mengetik ke dalam input field (seperti `send_keys()`)"],
+      ["cy.click()", "Mengklik sebuah elemen"],
+      ["cy.contains('text')", "Mencari elemen berdasarkan teks yang terlihat di dalamnya"],
+      ["cy.url()", "Mendapatkan URL yang sedang aktif (seperti `driver.current_url`)"]
+    ]
+  }}
+/>
+
+### Studi Kasus: SauceDemo (Selenium vs Cypress)
+
+Ini adalah bagian terbaik. Mari kita ambil **TC-001: Login Sukses** dari `saucedemo.com`.
+
+Di *post* sebelumnya, kita menulis ini dengan **Selenium (Python)**:
+<CodeBlock
+    marginBottom="16"
+    codes={[
+      {
+        code:
+`# Selenium (Python)
+driver.get("https://www.saucedemo.com")
+driver.find_element(By.ID, "user-name").send_keys("standard_user")
+driver.find_element(By.ID, "password").send_keys("secret_sauce")
+driver.find_element(By.ID, "login-button").click()
+assert driver.current_url == "https://www.saucedemo.com/inventory.html"
+`,
+        language: "python",
+        label: "Recap: test_login.py (Selenium)"
+      }
+    ]}
+/>
+
+Sekarang, bandingkan betapa bersih dan mudah dibacanya tes yang sama jika ditulis dengan **Cypress (JavaScript)**:
+
+<CodeBlock
+    marginBottom="24"
+    codes={[
+      {
+        code:
+`// Cypress (JavaScript)
+describe('Login Test', () => {
+  it('TC-001: Login sukses', () => {
+    // 1. Arrange
+    cy.visit('https://www.saucedemo.com')
+
+    // 2. Act
+    cy.get('#user-name').type('standard_user')
+    cy.get('#password').type('secret_sauce')
+    cy.get('#login-button').click()
+
+    // 3. Assert (Automatic wait sudah termasuk!)
+    cy.url().should('include', '/inventory.html')
+  })
+})
+`,
+        language: "javascript",
+        label: "Kode Tes: login.cy.js (Cypress)"
+      }
+    ]}
+/>
+Perhatikan `.should('include', ...)`? Itulah *assertion* bawaan Cypress. Jauh lebih mudah dibaca!
+
+### Refleksi Akhir: Menutup Seri Blog Ini
+
+Dan inilah akhir dari seri blog kita tentang *Software Testing & Quality Assurance*. Kita telah melakukan perjalanan yang luar biasa:
+
+1.  Dimulai dari **Strategi Testing** (Kelompok 1) dan pentingnya SDLC.
+2.  Memahami pengguna dengan **UI/UX Testing** (Kelompok 2) dan *Heuristic Evaluation*.
+3.  Menyusun "peta perang" dengan **Testing Plan** (Kelompok 3).
+4.  Turun ke lapangan dengan **Test Case & Bug Report** (Kelompok 4).
+5.  Masuk ke fondasi kode dengan **Unit Testing** (Kelompok 5) dan pola AAA.
+6.  Menguji "dapur" aplikasi dengan **API Testing** (Kelompok 6).
+7.  Mempelajari "robot" klasik E2E dengan **Selenium** (Kelompok 7).
+8.  Dan akhirnya, melihat masa depan E2E dengan **Cypress** (Kelompok 8).
+
+<Feedback
+    icon
+    variant="success"
+    title="Kesimpulan Akhir Saya"
+    description="Software testing bukanlah satu fase, tapi sebuah budaya. Ini adalah spektrum yang membentang dari developer (Unit Test) hingga pengguna (UX Test). Setiap lapisan, dari API hingga UI, membutuhkan pendekatannya sendiri. Menguasai alat-alat ini (dari Pytest, Postman, hingga Cypress) adalah apa yang membedakan 'pembuat kode' dari 'insinyur perangkat lunak' yang membangun produk berkualitas."
+    marginBottom="16"
+/>
